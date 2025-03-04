@@ -79,750 +79,1467 @@
         font-size: 30px;
       }
     </style>
-    <title>Исключения</title>
+    <title>Symfony</title>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
         <section>
-          <h2>PDO в PHP</h2>
+          <h2>Symfony</h2>
         </section>
 
         <section>
-          <h3>Определение PDO</h3>
+          <h3>Что такое Symfony</h3>
           <p>
-            Расширение PHP Data Objects (PDO) определяет легкий и согласованный
-            интерфейс для доступа к базам данных в PHP. Каждый драйвер базы
-            данных, реализующий интерфейс PDO, может предоставлять функции,
-            специфичные для базы данных, как обычные функции расширения.
-            Обратите внимание, что вы не можете выполнять какие-либо функции
-            базы данных, используя расширение PDO само по себе; вы должны
-            использовать специфичный для базы данных драйвер PDO для доступа к
-            серверу базы данных
+            Symfony — это популярный PHP-фреймворк с открытым исходным кодом,
+            который предназначен для разработки сложных веб-приложений и API. Он
+            предоставляет мощный набор компонентов, которые позволяют
+            разработчикам быстро строить качественные и масштабируемые
+            веб-приложения. Symfony ориентирован на гибкость и расширяемость, и
+            часто используется для создания крупных и сложных веб-проектов,
+            таких как корпоративные сайты, интернет-магазины, платформы для
+            работы с данными и многие другие.
           </p>
         </section>
 
         <section>
-          <h3>Уточнения</h3>
+          <h3>Что такое Framework</h3>
           <p>
-            PDO предоставляет уровень абстракции доступа к данным , что
-            означает, что независимо от того, какую базу данных вы используете,
-            вы используете одни и те же функции для выдачи запросов и извлечения
-            данных. PDO не предоставляет уровень абстракции базы данных ; он не
-            переписывает SQL и не эмулирует отсутствующие функции. Вам следует
-            использовать полноценный уровень абстракции, если вам нужна эта
-            возможность.
+            Фреймворк (Framework) — это набор готовых инструментов и библиотек,
+            которые предоставляют структуру и шаблоны для разработки
+            программного обеспечения. Фреймворк упрощает разработку, обеспечивая
+            решение распространённых задач, таких как обработка запросов,
+            маршрутизация, взаимодействие с базой данных, аутентификация и
+            другие.
           </p>
         </section>
 
         <section>
-          <h3>Соединение</h3>
+          <h2>Twig</h2>
+        </section>
+
+        <section>
+          <h3>Что такое Twig</h3>
           <p>
-            Для соединения с базой данных PDO использует dsn(Data Source Name)
+            Twig — это шаблонизатор для PHP, который используется для создания
+            HTML-шаблонов. Он помогает разделить логику работы с данными и
+            представление этих данных на странице.
           </p>
         </section>
 
         <section>
-          <h3>Пример соединения</h3>
+          <h3>Twig в symfony</h3>
+          <p>
+            Все шаблоны обычно находятся в папке templates/ в корне проекта
+            Symfony, и для рендеринга страницы достаточно в контроллере
+            использовать метод render()
+          </p>
+        </section>
+
+        <section>
+          <h3>Синтаксис функции render</h3>
           <pre>
             <code class="language-php" data-trim data-line-numbers="">
-              $host = '127.0.0.1';
-              $db = 'test';
-              $user = 'root';
-              $pass = '';
-              $charset = 'utf8';
-
-              $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-              $opt = [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => false,
-              ];
-              $pdo = new PDO($dsn, $user, $pass, $opt);           
+              $this->render(string $view, array $parameters = [])
             </code>
           </pre>
-        </section>
 
-        <section>
-          <h3>Пояснения</h3>
-          <p>
-            В $dsn задается тип БД, с которым будем работать (mysql), хост, имя
-            базы данных и чарсет
-          </p>
-          <p>затем идут имя пользователя и пароль</p>
-          <p>после которого задается массив опций</p>
-        </section>
-
-        <section>
-          <h3>Обработка исключения</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              try {
-                $dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
-              } catch (PDOException $e) {
-                  // attempt to retry the connection after some timeout for example
-              }
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Стандратный select запрос</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->query('SELECT name FROM users');
-              while ($row = $stmt->fetch())
-              {
-                echo $row['name'] . "\n";
-              }
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Подготовленные запросы</h3>
-          <p>
-            Если же в запрос передаётся хотя бы одна переменная, то этот запрос
-            в обязательном порядке должен выполняться только через
-            подготовленные выражения. Подготовленные выражения можно описать,
-            как некий вид скомпилированного шаблона SQL запроса, который будет
-            запускаться приложением и настраиваться с помощью входных
-            параметров.
-          </p>
-        </section>
-
-        <section>
-          <h3>Преимущества подгтовленных запросов</h3>
-          <ul style="font-size: 30px">
-            <li>
-              Запрос необходимо однажды подготовить и затем его можно запускать
-              столько раз, сколько нужно, причём как с теми же, так и с
-              отличающимися параметрами. Когда запрос подготовлен, СУБД
-              анализирует его, компилирует и оптимизирует план его выполнения.
-            </li>
-            <li>
-              Параметры подготовленного запроса не требуется экранировать
-              кавычками; драйвер это делает автоматически. Если в приложении
-              используются исключительно подготовленные запросы, разработчик
-              может быть уверен, что никаких SQL-инъекций случиться не может
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Пример SQL-инъекций</h3>
-          <pre>
-            <code>$sql = "SELECT * FROM Users WHERE UserId = " + $userId;</code>
-          </pre>
-          <p>
-            Если пользователь подставит в userId = 105 OR 1=1, то данный sql
-            запрос вернёт всех пользователей
-          </p>
-          <p>
-            Для того чтобы SQL-инъекций не произошло всегда используйте
-            подготовленные выражения
-          </p>
-        </section>
-
-        <section>
-          <h3>Плейсхолдер</h3>
-          <p>
-            Внутрь подготовленного выражения ставится специальный маркер -
-            плейсхолдер
-          </p>
-          <p>
-            PDO поддерживает позиционные плейсхолдеры (?), для которых важен
-            порядок передаваемых переменных, и именованные (:name), для которых
-            порядок не важен.
-          </p>
-        </section>
-
-        <section>
-          <h3>Примеры подготовленных выражений</h3>
-          <pre>
-            <code>
-              $sql = 'SELECT name FROM users WHERE email = ?';
-              $sql = 'SELECT name FROM users WHERE email = :email';
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Выполениние подготовленных запросов в PDO</h3>
-          <p>
-            Чтобы выполнить такой запрос, сначала его надо подготовить с помощью
-            функции prepare(). Она также возвращает PDO statement, но ещё без
-            данных. Чтобы их получить, надо исполнить этот запрос,
-            предварительно передав в него переменные.
-          </p>
-        </section>
-
-        <section>
-          <h3>Выполнение подготовленных запросов в PDO</h3>
-          <p>
-            Передать переменные можно 2 способами. Первый из них с помощью
-            функции execute(), передав ему массив с переменными
-          </p>
-        </section>
-
-        <section>
-          <h3>Пример подготовленных запросов в PDO</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare('SELECT name FROM users WHERE email = ?');
-              $stmt->execute([$email]);
-
-              $stmt = $pdo->prepare('SELECT name FROM users WHERE email = :email');
-              $stmt->execute(['email' => $email]);
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Пример подготовленных запросов в PDO</h3>
-          <p>Второй способ через функцию bindValue</p>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $calories = 150;
-              $colour = 'red';
-              $sth = $dbh->prepare('SELECT name, colour, calories
-                FROM fruit
-                WHERE calories < :calories AND colour = :colour');
-
-              $sth->bindValue('calories', $calories, PDO::PARAM_INT);
-              $sth->bindValue('colour', $colour, PDO::PARAM_STR);
-              $sth->execute();
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <a href="https://www.php.net/manual/en/pdo.constants.php"
-            >Список типов параметров в PDO</a
-          >
-        </section>
-
-        <section>
-          <h3>Ещё пример подготволенного выражения с перебором строк</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare('SELECT name FROM users WHERE email = ?');
-              $stmt->execute([$_GET['email']]);
-              foreach ($stmt as $row)
-              {
-                echo $row['name'] . "\n";
-              }
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Пример вставки</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare("INSERT INTO myTable (name, age) VALUES (?, ?)");
-              $stmt->execute(['Пётр', 29]);
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Пример Обновления</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare("UPDATE myTable SET name = ? WHERE id = ?")
-              ->execute(['Максим', 115]);
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Пример удаления</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare("DELETE FROM myTable WHERE id = ?");
-              $stmt->execute([115]);
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>fetch и fetchAll в PDO</h3>
-          <p>
-            Чтобы извлечь результаты в PDO, у вас есть возможность
-            $stmt->fetch()или $stmt->fetchAll(). Первый вариант более
-            универсален, так как его можно использовать для извлечения одной
-            строки или всех, если использовать его в цикле. Последний вариант по
-            сути является синтаксическим сахаром, так как он позволяет извлечь
-            весь ваш набор результатов в массиве с помощью этой одной команды.
-          </p>
-        </section>
-
-        <section>
-          <h3>Пример fetch</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare('SELECT name FROM users WHERE email = ?');
-              $stmt->execute([$_GET['email']]);
-              while ($row = $stmt->fetch())
-              {
-                echo $row[0] . "\n";
-                echo $row['name'] . "\n";
-                echo $row->name . "\n";
-              }
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Пример fetchAll</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $data = $pdo->query('SELECT id, name FROM users')->fetchAll(PDO::FETCH_KEY_PAIR);
-              array (
-                  104 => 'John',
-                  110 => 'Mike',
-                  120 => 'Mary',
-                  121 => 'Kathy',
-              )
-            </code>
-        </pre>
-        </section>
-
-        <section>
-          <h3>Режимы выборки</h3>
-          <p>
-            В каком виде вы получите данные зависит от режима выборки который
-            пердается первым аргументов в fetch и fetchAll
-          </p>
-          <p>Для объединения нескольких режимов используется оператор |</p>
-        </section>
-
-        <section>
-          <h3>Режимы выборки для fetch и fetchAll</h3>
           <ul>
-            <li>PDO::FETCH_NUM- Извлечь числовой массив</li>
-            <li>PDO::FETCH_ASSOC- Извлечь ассоциативный массив</li>
             <li>
-              PDO::FETCH_COLUMN- Извлечь только один столбец. Скалярный для
-              fetch(); одномерный массив для fetchAll(). Если fetch(), то вместо
-              этого можно использовать fetchColumn() синтаксический сахар
+              $view — это путь к шаблону, который ты хочешь отрендерить. В
+              Symfony по умолчанию это путь относительно папки templates/.
+              Например, если у вас шаблон templates/example/index.html.twig, то
+              параметр $view будет выглядеть так: 'example/index.html.twig'
             </li>
             <li>
-              PDO::FETCH_CLASS | PDO::FETCH_CLASSTYPE- Извлекает объект с именем
-              класса в соответствии со значением базы данных. Если класс не
-              существует, по умолчанию будет stdClass
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Режимы выборки только для fetch</h3>
-          <ul style="font-size: 25px">
-            <li>
-              PDO::FETCH_OBJ- Извлечь как универсальный объект stdClass. Вместо
-              этого рекомендуется использовать fetchObject()синтаксический
-              сахар, так как он позволяет извлечь анонимный и указанный класс.
-              Вы все еще можете использовать PDO::FETCH_CLASS, но вы должны
-              установить его с setFetchMode(PDO::FETCH_CLASS, 'MyClass'), за
-              которым следует fetch(). Может использоваться с fetchAll(), но не
-              рекомендуется, так как он менее универсален
-            </li>
-            <li>
-              PDO::FETCH_LAZY- Извлекает ссылку PDORow , которая может быть
-              объектом, ассоциативным или числовым массивом. Эффективно
-              использует память, так как строго извлекает результаты при вызове
-              объектного, ассоциативного или числового индекса
-            </li>
-            <li>
-              PDO::FETCH_INTO- Извлечь в существующий класс. Необходимо
-              использовать setFetchMode(PDO::FETCH_INTO, $myClass), за которым
-              следуетfetch()
+              $parameters — это массив данных, которые вы передаете в шаблон.
+              Эти данные доступны в шаблоне через переменные. Например, если вы
+              передаете в шаблон переменную name, то в шаблоне вы можете
+              использовать её как {{ name }}
             </li>
           </ul>
         </section>
 
         <section>
-          <h3>Режимы выборки только для fetchAll</h3>
-          <ul style="font-size: 25px">
-            <li>
-              PDO::FETCH_CLASS- Извлечь либо как универсальный объект stdClass,
-              либо в существующий класс, если указано; то же самое, что
-              использовать PDO::FETCH_OBJанонимный объект, поэтому имеет смысл
-              использовать его, так как он более гибок. Может использоваться
-              fetch()также с , но не является предпочтительным.
-            </li>
-            <li>
-              PDO::FETCH_KEY_PAIR- Извлечь пару ключ/значение, где первый
-              столбец является уникальным ключом, а второй — единственным
-              значением.
-            </li>
-            <li>
-              PDO::FETCH_UNIQUE- То же, что и PDO::FETCH_KEY_PAIR, только часть
-              значения представляет собой массив
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Режимы выборки только для fetchAll</h3>
-          <ul style="font-size: 25px">
-            <li>
-              PDO::FETCH_GROUP- Извлечь данные по общему имени столбца и
-              сгруппировать все строки по этому ключу в виде массива
-              ассоциативных массивов.
-            </li>
-            <li>
-              PDO::FETCH_GROUP | PDO::FETCH_COLUMN- То же самое
-              PDO::FETCH_GROUP, что и , только часть значения представляет собой
-              массив одномерных числовых массивов.
-            </li>
-            <li>
-              PDO::FETCH_GROUP | PDO::FETCH_CLASS- То же, что и
-              PDO::FETCH_GROUP, но вместо этого используется массив массивов
-              объектов
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Извлечение в ассоциативный массив</h3>
+          <h3>Пример использования в функции</h3>
           <pre>
             <code class="language-php" data-trim data-line-numbers="">
-              $arr = [];
-              $stmt = $pdo->prepare("SELECT * FROM myTable WHERE id <= ?");
-              $stmt->execute([5]);
-              while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $arr[] = $row;
+              class ExampleController extends AbstractController
+              {
+                  public function index(): Response
+                  {
+                      // Данные, которые мы передаем в шаблон
+                      $name = 'Иван';
+
+                      // Вызов функции render для рендеринга шаблона с переданными данными
+                      return $this->render('example/index.html.twig', [
+                          'superName' => $name,
+                      ]);
+                  }
               }
-              var_export($arr);
-              /** 
-              [
-                ['name' => 'Jerry', 'age' => 14, 'weight' => 129], 
-                ['name' => 'Alexa', 'age' => 22, 'weight' => 108]
-              ]
-              */
             </code>
           </pre>
         </section>
 
         <section>
-          <h3>Извлечение в числовой массив</h3>
+          <h3>Пример использования в функции</h3>
           <pre>
             <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare("SELECT first_name, squat, bench_press FROM myTable WHERE weight > ?");
-              $stmt->execute([200]);
-              $arr = $stmt->fetchAll(PDO::FETCH_NUM);
-              var_export($arr);
-
-              /**
-              [
-                ['Thad', 305, 250], 
-                ['Larry', 225, 180]
-              ]
-              */
+              <script type="text/template">
+                {# templates/example/index.html.twig #}
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Пример с Twig</title>
+                </head>
+                <body>
+                    <h1>Привет, {{ superName }}!</h1>
+                </body>
+                </html>
+              </script>
             </code>
           </pre>
         </section>
 
         <section>
-          <h3>Извлечение в массив объектов</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare("SELECT name, age, weight FROM myTable WHERE id > ?");
-              $stmt->execute([12]);
-              $arr = $stmt->fetchAll(PDO::FETCH_CLASS);
-              var_export($arr);
-
-              /**
-              [
-                stdClass Object ['name' => 'Jerry', 'age' => 14, 'weight' => 129], 
-                stdClass Object ['name' => 'Alexa', 'age' => 22, 'weight' => 108]
-              ]
-              */
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Извлечение в массив существующих классов</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              class myClass {}
-              $stmt = $pdo->prepare("SELECT name, age, weight FROM myTable WHERE id > ?");
-              $stmt->execute([12]);
-              $arr = $stmt->fetchAll(PDO::FETCH_CLASS, 'myClass');
-              var_export($arr);
-
-              /**
-              [
-                myClass Object ['name' => 'Jerry', 'age' => 14, 'weight' => 129], 
-                myClass Object ['name' => 'Alexa', 'age' => 22, 'weight' => 108]
-              ]
-              */
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Извлечение в массив существующих классов</h3>
+          <h3>Условные выражения в twig</h3>
           <p>
-            Имейте в виду, что это имеет непредсказуемое поведение внедрения
-            значения свойства до его установки в конструкторе (если он у вас
-            есть). Это означает, что если вы уже использовали одно из имен
-            переменных в конструкторе, то значение выборки будет перезаписано
-            значением по умолчанию. Чтобы гарантировать назначение значений
-            после вызова конструктора, вы должны сделать
-            fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'myClass')
+            Конструкция {% if %} используется для проверки условий. Внутри можно
+            использовать логические операторы, такие как and, or, not
           </p>
         </section>
 
         <section>
-          <h3>Извлечение скалярного значения</h3>
+          <h3>Пример конструкции if</h3>
           <pre>
             <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare("SELECT COUNT(*) FROM myTable WHERE weight < ?");
-              $stmt->execute([185]);
-              $count = $stmt->fetch(PDO::FETCH_COLUMN);
-              //Синтаксический сахар для строки выше: $count = $stmt->fetchColumn();
-              echo $count; //Output: 1784
+              <script type="text/template">
+                {% if age >= 18 %}
+                    <p>Ты совершеннолетний!</p>
+                {% else %}
+                    <p>Ты несовершеннолетний!</p>
+                {% endif %}
+              </script>
             </code>
           </pre>
-        </section>
-
-        <section>
-          <h3>Извлечение одного столбца как переменную массива</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare("SELECT height FROM myTable WHERE id < ?");
-              $stmt->execute([500]);
-              $heights = $stmt->fetchAll(PDO::FETCH_COLUMN);
-              var_export($heights);
-
-              /**
-                [78, 64, 68, 54, 58]
-              */
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Извлечение пару ключ/значение</h3>
           <p>
-            Это создает ассоциативный массив с форматом первого столбца в
-            качестве ключа и второго столбца в качестве значения. Поэтому ваш
-            первый столбец должен быть уникальным значением.
+            Здесь проверяется, если возраст (age) больше или равен 18, то
+            выводится сообщение о совершеннолетии, в противном случае — о
+            несовершеннолетии.
           </p>
         </section>
 
         <section>
-          <h3>Извлечение пару ключ/значение</h3>
+          <h3>Ещё пример if</h3>
           <pre>
             <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare("SELECT id, name FROM myTable WHERE age < ?");
-              $stmt->execute([25]);
-              $arr = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
-              var_export($arr);
+              <script type="text/template">
+                {% if age >= 18 %}
+                  <p>Ты совершеннолетний!</p>
+                {% elseif age >= 16 %}
+                  <p>Ты почти совершеннолетний!</p>
+                {% else %}
+                  <p>Ты несовершеннолетний!</p>
+                {% endif %}
 
-              /** 
-              [7 => 'Jerry', 10 => 'Bill', 29 => 'Bobby']
-              */
+              </script>
             </code>
           </pre>
         </section>
 
         <section>
-          <h3>Извлечение массив пар ключ/значение</h3>
+          <h3>Логические операторы в if</h3>
+          <p>Twig поддерживает логические операторы: and, or, not</p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                {% if age >= 18 and isAdmin %}
+                    <p>Добро пожаловать, администратор!</p>
+                {% elseif age < 18 or not isAdmin %}
+                    <p>Ты не администратор или несовершеннолетний.</p>
+                {% endif %}
+              </script>
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Циклы в twig</h3>
           <p>
-            ключом будет ваш первый столбец, который должен быть уникальным
-            значением, в то время как значением будут остальные столбцы как
-            ассоциативный массив
-          </p>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare("SELECT id, max_bench, max_squat FROM myTable WHERE weight < ?");
-              $stmt->execute([225]);
-              $arr = $stmt->fetchAll(PDO::FETCH_UNIQUE);
-              var_export($arr);
-
-              /** 
-              [
-                17 => ['max_bench' => 230, 'max_squat' => 175],
-                84 => ['max_bench' => 195, 'max_squat' => 235],
-                136 => ['max_bench' => 135, 'max_squat' => 285]
-              ]
-              */
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Извлечение в группах</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare("SELECT eye_color, name, weight FROM myTable WHERE age < ?");
-              $stmt->execute([35]);
-              $arr = $stmt->fetchAll(PDO::FETCH_GROUP);
-              var_export($arr);
-
-              /**
-              [
-                'green' => [
-                  ['name' => 'Patrick', 'weight' => 178],
-                  ['name' => 'Olivia', 'weight' => 132]
-                ],
-                'blue' => [
-                  ['name' => 'Kyle', 'weight' => 128],
-                  ['name' => 'Ricky', 'weight' => 143]
-                ],
-                'brown' => [
-                  ['name' => 'Jordan', 'weight' => 173],
-                  ['name' => 'Eric', 'weight' => 198]
-                ]
-              ]
-              */
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Извлечение в существующий класс</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              class myClass {
-                public $max_bench;
-                public $max_squat;
-              }
-              
-              $myClass = new myClass();
-              var_export($myClass);
-              
-              $stmt = $pdo->prepare("SELECT max_bench, max_squat FROM myTable WHERE weight < ?");
-              $stmt->execute([200]);
-              $stmt->setFetchMode(PDO::FETCH_INTO, $myClass);
-              $arr = $stmt->fetch();
-              var_export($arr); //$arr === $myClass
-              /**
-              myClass Object ['max_bench' => null, 'max_squat' => null]
-              myClass Object ['max_bench' => 225, 'max_squat' => 95]
-              */
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Оператор Like (Не правильно)</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $stmt = $pdo->prepare("SELECT id, name, age FROM myTable WHERE name LIKE %?%"); 
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Оператор Like (Правильно)</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $search = "%Пётр%";
-              $stmt = $pdo->prepare("SELECT id, name, age FROM myTable WHERE name LIKE ?");
-              $stmt->execute([$search]);
-              $arr = $stmt->fetchAll();
-              var_export($arr);
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Оператор In</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $inArr = [1, 3, 5];
-              $clause = implode(',', array_fill(0, count($inArr), '?')); // создаёт три placeholder-а
-              $stmt = $pdo->prepare("SELECT * FROM myTable WHERE id IN ($clause)");
-              $stmt->execute($inArr);
-              $resArr = $stmt->fetchAll();
-              var_export($resArr);
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Оператор In с нескольками</h3>
-          <pre>
-            <code class="language-php" data-trim data-line-numbers="">
-              $inArr = [1, 3, 5];
-              $clause = implode(',', array_fill(0, count($inArr), '?')); //create 3 question marks
-              $fullArr = array_merge($inArr, [5]); //merge WHERE IN array with other value(s)
-              $stmt = $pdo->prepare("SELECT * FROM myTable WHERE id IN ($clause) AND id < ?");
-              $stmt->execute($fullArr);
-              $resArr = $stmt->fetchAll();
-              var_export($resArr);
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3>Проблема с операторорм LIMIT</h3>
-          <p>
-            Когда PDO работает в режиме эмуляции, все данные, которые были
-            переданы напрямую в execute(), форматируются как строки. То есть,
-            эскейпятся и обрамляются кавычками. Поэтому LIMIT ?,? превращается в
-            LIMIT '10', '10' и очевидным образом вызывает ошибку синтаксиса.
+            Циклы в Twig используются для перебора массивов, объектов и других
+            итерируемых структур
           </p>
         </section>
 
         <section>
-          <h3>Проблема с операторорм LIMIT</h3>
+          <h3>Пример цикла</h3>
           <pre>
             <code class="language-php" data-trim data-line-numbers="">
-              $stm = $pdo->prepare('SELECT * FROM table LIMIT ?, ?');
-              $stm->bindValue(1, $limit_from, PDO::PARAM_INT);
-              $stm->bindValue(2, $per_page, PDO::PARAM_INT);
-              $stm->execute();
-              $data = $stm->fetchAll();
+              <script type="text/template">
+                {% for user in users %}
+                    <p>{{ user.name }}</p>
+                {% else %}
+                    <p>Пользователей нет.</p>
+                {% endfor %}
+              </script>
+            </code>
+          </pre>
+          <p>
+            В этом примере перебираются все элементы массива users. Если массив
+            пустой, будет выведено сообщение "Пользователей нет."
+          </p>
+        </section>
+
+        <section>
+          <h3>Ещё один пример цикла с использования loop</h3>
+          <p>
+            Можно получить индекс текущего элемента с помощью специальной
+            переменной loop.index или loop.index0 (индексация с 0).
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                {% for user in users %}
+                    <p>{{ loop.index }}: {{ user.name }}</p>
+                {% endfor %}
+              </script>
             </code>
           </pre>
         </section>
 
         <section>
-          <h3>Транзакции в SQL</h3>
+          <h3>Switch в twig</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                {% switch color %}
+                    {% case 'red' %}
+                        <p>Красный цвет</p>
+                    {% case 'green' %}
+                        <p>Зеленый цвет</p>
+                    {% case 'blue' %}
+                        <p>Синий цвет</p>
+                    {% default %}
+                        <p>Неизвестный цвет</p>
+                {% endswitch %}
+              </script>
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Наследование шаблонов в twig</h3>
           <p>
-            Транзакцией называется атомарная группа запросов SQL, т. е. запросы,
-            которые рассматриваются как единое целое. Если база данных может
-            выполнить всю группу запросов, она делает это, но если любой из них
-            не может быть выполнен в результате сбоя или по какой-то другой
-            причине, не будет выполнен ни один запрос группы. Все или ничего.
+            Twig позволяет создавать блоки в шаблонах и наследовать их в других
+            шаблонах. Это особенно полезно для создания базовых шаблонов и
+            переопределения их частей
           </p>
         </section>
 
         <section>
-          <h3>Транзакции в SQL</h3>
+          <h3>Пример базавого шаблона</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>{% block title %}По умолчанию{% endblock %}</title>
+                </head>
+                <body>
+                    <header>
+                        <h1>{% block header %}Заголовок по умолчанию{% endblock %}</h1>
+                    </header>
+
+                    <main>
+                        {% block content %}Контент по умолчанию{% endblock %}
+                    </main>
+
+                    <footer>
+                        {% block footer %}Футер по умолчанию{% endblock %}
+                    </footer>
+                </body>
+                </html>
+              </script>
+            </code>
+          </pre>
+          <p>
+            В этом примере мы создаем блоки title, header, content и footer,
+            которые можно переопределить в дочерних шаблонах.
+          </p>
+        </section>
+
+        <section>
+          <h3>Дочерний шаблон</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                {% extends 'base.html.twig' %}
+
+                {% block title %}Главная страница{% endblock %}
+
+                {% block header %}
+                    <h1>Добро пожаловать на главную страницу!</h1>
+                {% endblock %}
+
+                {% block content %}
+                    <p>Здесь будет основной контент страницы.</p>
+                {% endblock %}
+              </script>
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h2>Роутинг</h2>
+        </section>
+
+        <section>
+          <h3>Роутинг</h3>
+          <p>
+            В Symfony роутинг отвечает за определение того, как HTTP-запросы
+            должны быть направлены к определенным контроллерам в вашем
+            приложении. Роутинг — это процесс сопоставления URL с контроллерами,
+            а также параметрами, которые можно передать этим контроллерам.
+          </p>
+        </section>
+
+        <section>
+          <h3>Создание контроллера</h3>
+          <p>Для создания контроллера используйте команду:</p>
           <pre>
             <code>
-              START TRANSACTION;
-              SELECT total FROM accounts WHERE user_id = 2;
-              UPDATE accounts SET total = total - 3000 WHERE user_id = 2;
-              UPDATE accounts SET total = total + 3000 WHERE user_id IS NULL;
-              COMMIT;
+              php bin/console make:controller YourController
             </code>
           </pre>
         </section>
 
         <section>
-          <h3>Пример транзакций в PDO</h3>
+          <h3>Роутинг</h3>
+
           <pre>
             <code class="language-php" data-trim data-line-numbers="">
-              try {
-                $pdo->beginTransaction();
-                $stmt1 = $pdo->prepare("INSERT INTO myTable (name, state) VALUES (?, ?)");
-                $stmt2 = $pdo->prepare("UPDATE myTable SET age = ? WHERE id = ?");
-                if(!$stmt1->execute(['Rick', 'NY'])) throw new Exception('Stmt 1 Failed');
-                if(!$stmt2->execute([27, 139])) throw new Exception('Stmt 2 Failed');
-                $pdo->commit();
-              } catch(Exception $e) {
-                $pdo->rollback();
-                throw $e;
+              namespace App\Controller;
+
+              use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+              use Symfony\Component\Routing\Annotation\Route;
+
+              class ExampleController extends AbstractController
+              {
+                  #[Route('/hello', name: 'hello')]
+                  public function hello(string $name)
+                  {
+                      return $this->render('hello.html.twig');
+                  }
               }
+            </code>
+          </pre>
+          <p>
+            #[Route('/hello', name: 'hello')] — атрибут маршрута, который
+            привязывает URL. В данном примере когда пользователь зайдет по урлу
+            /hello ему вернется содержимое шаблона hello.html.twig. Имя урла
+            должно быть уникальным
+          </p>
+        </section>
+
+        <section>
+          <h3>Роутинг с параметром</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              namespace App\Controller;
+
+              use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+              use Symfony\Component\Routing\Annotation\Route;
+
+              class ExampleController extends AbstractController
+              {
+                  #[Route('/greet/{name}', name: 'greet_optional', defaults: ['name' => 'Guest'])]
+                  public function greetOptional(string $name)
+                  {
+                      return $this->render('greet_optional.html.twig', [
+                          'name' => $name
+                      ]);
+                  }
+              }
+            </code>
+          </pre>
+          <p>
+            Когда пользователь посещает /greet/John, значение John передается в
+            метод как параметр $name.
+          </p>
+          <p>
+            По умолчанию все параметры имеют тип string, но вы можете менять тип
+            меняя тип в аргументах функции
+          </p>
+          <p>
+            В атрибуте маршрута установлено значение по умолчанию для параметра
+            name — "Guest", если параметр не будет передан в URL.
+          </p>
+        </section>
+
+        <section>
+          <h3>Изменение метода роутинга</h3>
+          <h5>Ещё один пример на следующем слайде</h5>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              namespace App\Controller;
+
+              use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+              use Symfony\Component\Routing\Annotation\Route;
+
+              class ExampleController extends AbstractController
+              {
+                  #[Route('/form', name: 'form_page', methods: ['GET'])]
+                  public function formPage()
+                  {
+                    return $this->render('form.html.twig');
+                  }
+              }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              namespace App\Controller;
+
+              use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+              use Symfony\Component\Routing\Annotation\Route;
+              
+              class ExampleController extends AbstractController
+              {
+                  #[Route('/form', name: 'form_submit', methods: ['POST'])]
+                  public function formSubmit()
+                  {
+                      return $this->render('form_submission.html.twig');
+                  }
+              }
+            </code>
+          </pre>
+          <p>
+            Мы указываем методы HTTP (methods: ['GET'] или methods: ['POST']) в
+            атрибуте маршрута для ограничения типов запросов, которые могут быть
+            использованы для данного маршрута.
+          </p>
+          <p>Возможные методы HTTP: GET, POST, PUT, PATCH, DELETE</p>
+        </section>
+
+        <section>
+          <h3>Генерация урла с помощью имени маршрута</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+                namespace App\Controller;
+
+                use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+                use Symfony\Component\Routing\Annotation\Route;
+
+                class ExampleController extends AbstractController
+                {
+                    #[Route('/generate-url', name: 'generate_url')]
+                    public function generateUrlExample()
+                    {
+                        // Генерация URL для маршрута 'hello' с параметром 'name'
+                        $url = $this->generateUrl('hello', ['name' => 'Иван']);
+
+                        // Перенаправление на сгенерированный URL
+                        return $this->redirect($url);
+                    }
+                }
+
+            </code>
+          </pre>
+          <p>
+            Мы генерируем URL для маршрута с именем hello, передавая параметр
+            name="Иван", и перенаправляем пользователя на сгенерированный URL
+          </p>
+          <p>Для перенаправления пользователя используется метод redirect</p>
+        </section>
+
+        <section>
+          <h3>Генерация ссылки внутри twig</h3>
+          <p>
+            В Symfony с использованием Twig для генерации ссылок можно
+            использовать встроенную функцию path()
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                <a href="{{ path('route_name') }}">Ссылка</a>
+              </script>
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Генерация ссылки с параметрами</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                <a href="{{ path('route_name', {'param1': 'value1', 'param2': 'value2'}) }}">Ссылка с параметрами</a>
+              </script>
+            </code>
+          </pre>
+          <p>Если маршруту нужны параметры, их можно передать как массив</p>
+        </section>
+        <section>
+          <h2>HTML формы</h2>
+        </section>
+        <section>
+          <h3>Формы html</h3>
+          <p>
+            В HTML форма (&ltform&gt) используется для отправки данных на
+            сервер, где они могут быть обработаны
+          </p>
+        </section>
+        <section>
+          <h3>Основные элементы формы</h3>
+          <ul>
+            <li>
+              &ltform&gt — корневой элемент формы, который определяет её
+              границы.
+            </li>
+            <li>&ltinput&gt — основной элемент для ввода данных.</li>
+            <li>&lttextarea&gt — многострочное текстовое поле для ввода.</li>
+            <li>&ltselect&gt и &ltoption&gt — выпадающий список.</li>
+            <li>
+              &ltbutton&gt — кнопка для отправки формы или для выполнения
+              действия.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Оснонвые атрибуты элемента&ltform&gt</h3>
+          <ul>
+            <li>
+              action — URL, куда отправляются данные формы. Если этот атрибут не
+              указан, данные отправляются на тот же URL, где находится форма.
+            </li>
+            <li>
+              method — метод отправки данных. Основные методы:GET — отправляет
+              данные в URL (параметры добавляются к адресу). Подходит для поиска
+              и отображения данных. POST — отправляет данные в теле
+              HTTP-запроса. Это более безопасный способ, который используется
+              для отправки больших объемов данных.
+            </li>
+            <li>
+              name — имя формы, которое используется для её идентификации.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Пример базовой формы</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+              <form action="/submit" method="POST">
+                <label for="username">Имя пользователя:</label>
+                <input type="text" id="username" name="username" required>
+              
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+              
+                <button type="submit">Отправить</button>
+              </form>
+            </script>
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Основные элементы ввода</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                <input type="text" name="username" placeholder="Введите имя пользователя">
+              </script>
+            </code>
+          </pre>
+          <p>
+            Текстовые поля (&ltinput type="text"&gt): Используются для ввода
+            обычного текста
+          </p>
+        </section>
+
+        <section>
+          <h3>Основные элементы ввода</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                <input type="password" name="password" placeholder="Введите пароль">
+              </script>
+            </code>
+          </pre>
+          <p>
+            Парольные поля. Показывают звездочки или точки вместо введенного
+            текста
+          </p>
+        </section>
+        <section>
+          <h3>Основные элементы ввода</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                <button>Отправить</button>
+                <!-- Или -->
+                <input type="submit" value="Отправить">
+              </script>
+            </code>
+          </pre>
+          <p>Кнопка для отправки формы</p>
+        </section>
+        <section>
+          <h3>Основные элементы ввода</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                <input type="checkbox" name="subscribe" value="yes">
+              </script>
+            </code>
+          </pre>
+          <p>Позволяют пользователю выбрать одну или несколько опций</p>
+        </section>
+        <section>
+          <h3>Основные элементы ввода</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                <input type="radio" name="gender" value="male">
+<input type="radio" name="gender" value="female">
+
+              </script>
+            </code>
+          </pre>
+          <p>Позволяют выбрать только одну опцию из множества</p>
+        </section>
+        <section>
+          <h3>Основные элементы ввода</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                <textarea name="message" rows="4" cols="50" placeholder="Введите ваше сообщение"></textarea>
+              </script>
+            </code>
+          </pre>
+          <p>
+            Для ввода большего объема текста, например, сообщений или
+            комментариев
+          </p>
+        </section>
+        <section>
+          <h3>Основные элементы ввода</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                <select name="country">
+                  <option value="usa">США</option>
+                  <option value="russia">Россия</option>
+                  <option value="france">Франция</option>
+                </select>                
+              </script>
+            </code>
+          </pre>
+          <p>Позволяют выбрать один или несколько элементов из списка</p>
+        </section>
+        <section>
+          <h3>Атрибуты для элементов формы</h3>
+          <ul>
+            <li>required — обязательный для заполнения элемент.</li>
+            <li>
+              placeholder — текст-заполнитель, который исчезает при вводе
+              данных.
+            </li>
+            <li>
+              value — задает значение для некоторых типов элементов, например,
+              для кнопок или радио-кнопок.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Переопределение метода в Symfony</h3>
+          <p>
+            Для того чтобы было возможно отправить запросы PUT или DELETE в
+            Symfony нужно включить специальную опцию http_method_override.
+            Данная опция расположена по адресу config/packages/framework.yaml
+          </p>
+        </section>
+
+        <section>
+          <h3>Переопределение метода в Symfony</h3>
+          <p>
+            Symfony позволяет переопределять HTTP-метод с помощью специального
+            поля в форме, которое называется _method. Это скрытое поле будет
+            передаваться на сервер, и Symfony будет интерпретировать его как
+            указание на метод, который нужно использовать. Таким образом, можно
+            отправить запрос с методом, отличным от GET или POST.
+          </p>
+        </section>
+        <section>
+          <h3>Пример переопределения метода на PUT</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              <script type="text/template">
+                <form action="{{ path('user_update', {'id': user.id}) }}" method="post">
+                  <input type="hidden" name="_method" value="PUT">
+                  
+                  <!-- Другие поля формы -->
+                  <label for="name">Имя</label>
+                  <input type="text" id="name" name="name" value="{{ user.name }}">
+              
+                  <button type="submit">Обновить</button>
+                </form>
+              </script>
+            </code>
+          </pre>
+          <p>
+            В этом примере мы создаем форму для обновления пользователя.
+            Несмотря на то, что форма использует POST метод, скрытое поле
+            _method с значением PUT указывает серверу, что фактически нужно
+            использовать метод PUT
+          </p>
+        </section>
+        <section>
+          <h2>Request в Symfony</h2>
+        </section>
+        <section>
+          <h3>Класс Request</h3>
+          <p>
+            В Symfony класс Request является частью компонента HttpFoundation и
+            представляет собой объект, который инкапсулирует все данные
+            HTTP-запроса. Он предоставляет удобный интерфейс для доступа к
+            данным запроса, таким как параметры GET и POST, заголовки, куки,
+            файлы и т. д.
+          </p>
+        </section>
+        <section>
+          <h3>Пример получения GET запроса</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $request->query->get('param_name'); // Получить значение параметра 'param_name' из GET-запроса
+            </code>
+          </pre>
+          <p>
+            Чтобы получить параметры из строки запроса, используйте метод
+            query->get()
+          </p>
+        </section>
+        <section>
+          <h3>Пример получения POST запроса</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $request->request->get('param_name'); // Получить значение параметра 'param_name' из POST-запроса
+            </code>
+          </pre>
+          <p>
+            Чтобы получить параметры из POST-запроса, используйте метод
+            request->get()
+          </p>
+        </section>
+
+        <section>
+          <h3>Пример обработки POST-запроса в контроллере</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              // src/Controller/UserController.php
+              namespace App\Controller;
+              
+              use Symfony\Component\HttpFoundation\Request;
+              use Symfony\Component\HttpFoundation\Response;
+              use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+              use Symfony\Component\Routing\Annotation\Route;
+              
+              class UserController extends AbstractController
+              {
+                  /**
+                   * @Route("/register", name="user_register")
+                   */
+                  public function register(Request $request): Response
+                  {
+                      // Получаем данные из POST-запроса
+                      $name = $request->request->get('name');
+                      $email = $request->request->get('email');
+                      
+                      // Простая валидация
+                      if (empty($name) || empty($email)) {
+                          return new Response('Пожалуйста, заполните все поля.');
+                      }
+                      
+                      // Обработка данных (например, сохранить в базу данных)
+                      // В данном примере просто выводим их
+                      return new Response("Имя: $name, Email: $email");
+                  }
+              }
+              
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Пример обработки GET-запроса в контроллере</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              // src/Controller/GreetController.php
+              namespace App\Controller;
+
+              use Symfony\Component\HttpFoundation\Request;
+              use Symfony\Component\HttpFoundation\Response;
+              use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+              use Symfony\Component\Routing\Annotation\Route;
+
+              class GreetController extends AbstractController
+              {
+                  /**
+                  * @Route("/greet", name="greet", methods={"GET"})
+                  */
+                  public function greet(Request $request): Response
+                  {
+                      // Получаем параметры из строки запроса
+                      $name = $request->query->get('name', 'Гость'); // Параметр 'name', по умолчанию 'Гость'
+                      $age = $request->query->get('age', 'неизвестен'); // Параметр 'age', по умолчанию 'неизвестен'
+
+                      // Создаем ответ с использованием данных из запроса
+                      $message = sprintf("Привет, %s! Тебе %s лет.", $name, $age);
+
+                      // Возвращаем ответ
+                      return new Response($message);
+                  }
+              }
+
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h2>Сущности и Миграции</h2>
+        </section>
+        <section>
+          <h3>Сущности и Миграции</h3>
+          <p>
+            В Symfony миграции и сущности (Entity) используются в связке с
+            Doctrine, что позволяет эффективно работать с базой данных. Миграции
+            — это способ управления изменениями в структуре базы данных, а
+            сущности — это классы, которые отражают таблицы в базе данных.
+            Давайте разберемся, как это работает на практике.
+          </p>
+        </section>
+
+        <section>
+          <h3>Сущности(Entities)</h3>
+          <p>
+            Сущности в Doctrine представляют собой объекты, которые отражают
+            таблицы в базе данных. Сущности связываются с таблицами через
+            аннотации или YAML/XML-конфигурации.
+          </p>
+        </section>
+        <section>
+          <h3>Команда для создания сущностей</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              php bin/console make:entity
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Пример сущности</h3>
+          <p>
+            Допустим, мы создаем сущность User, которая будет представлять
+            пользователя в нашей системе.
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              // src/Entity/User.php
+              namespace App\Entity;
+              
+              use Doctrine\ORM\Mapping as ORM;
+              
+              #[ORM\Entity(repositoryClass: "App\Repository\UserRepository")]
+              class User
+              {
+                  #[ORM\Id]
+                  #[ORM\GeneratedValue]
+                  #[ORM\Column(type: "integer")]
+                  private int $id;
+              
+                  #[ORM\Column(type: "string", length: 100)]
+                  private string $name;
+              
+                  #[ORM\Column(type: "string", length: 100)]
+                  private string $email;
+              
+                  // Геттеры и сеттеры для каждого свойства
+                  public function getId(): int
+                  {
+                      return $this->id;
+                  }
+              
+                  public function getName(): string
+                  {
+                      return $this->name;
+                  }
+              
+                  public function setName(string $name): self
+                  {
+                      $this->name = $name;
+                      return $this;
+                  }
+              
+                  public function getEmail(): string
+                  {
+                      return $this->email;
+                  }
+              
+                  public function setEmail(string $email): self
+                  {
+                      $this->email = $email;
+                      return $this;
+                  }
+              }              
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Атрибуты сущнсоти</h3>
+          <p>
+            В предыдущем примере мы В этом примере мы используем атрибуты для
+            задания метаданных сущности. Это делается через синтаксис
+            #[ATTRIBUTES], который применяется к свойствам класса и самому
+            классу.
+          </p>
+        </section>
+        <section>
+          <h3>Пояснение к атрибутам</h3>
+          <ul>
+            <li>
+              #[ORM\Entity(repositoryClass: "App\Repository\UserRepository")]:
+              Это атрибут, который указывает, что класс является сущностью
+              Doctrine и связывается с репозиторием UserRepository.
+            </li>
+            <li>
+              #[ORM\Id]: Обозначает, что это поле является идентификатором
+              (первичным ключом).
+            </li>
+            <li>
+              #[ORM\GeneratedValue]: Указывает, что значение этого поля будет
+              генерироваться автоматически.
+            </li>
+            <li>
+              #[ORM\Column(type: "integer")]: Указывает, что тип столбца в базе
+              данных будет integer.
+            </li>
+            <li>
+              #[ORM\Column(type: "string", length: 100)]: Указывает, что столбец
+              будет строкой (VARCHAR) длиной 100 символов.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Дополнение</h3>
+          <ul>
+            <li>
+              Мы используем типы данных PHP для определения свойств (например,
+              int, string), которые будут соответствовать соответствующим типам
+              в базе данных.
+            </li>
+            <li>
+              Для работы с полями сущности (например, для получения и изменения
+              значений полей) создаются стандартные геттеры и сеттеры.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Миграции</h3>
+          <p>
+            После того как вы создали сущность с атрибутами, необходимо создать
+            миграцию для синхронизации структуры базы данных с новой сущностью.
+          </p>
+        </section>
+        <section>
+          <h3>Команда для создания миграции</h3>
+          <pre>
+            <code>
+              php bin/console make:migration
+            </code>
+          </pre>
+          <p>
+            Эта команда сгенерирует миграцию, которая отобразит изменения в базе
+            данных, такие как создание таблицы user
+          </p>
+        </section>
+        <section>
+          <h3>Применение миграции</h3>
+          <pre>
+            <code>
+              php bin/console doctrine:migrations:migrate
+            </code>
+          </pre>
+          <p>Эта команда применит все миграции и синхронизирует базу данных.</p>
+        </section>
+        <section>
+          <h2>EntityManager</h2>
+        </section>
+        <section>
+          <h3>EntityManager</h3>
+          <p>
+            В Symfony, при работе с Doctrine ORM для манипуляции сущностями,
+            используется класс EntityManager. Этот класс отвечает за
+            взаимодействие с базой данных: создание, обновление, удаление, а
+            также выполнение запросов.
+          </p>
+        </section>
+        <section>
+          <h3>Частые команды в EntityManager</h3>
+          <p>
+            EntityManager — это центральный объект в Doctrine ORM, который
+            управляет жизненным циклом сущностей, выполняет операции сохранения,
+            обновления и удаления, а также предоставляет интерфейсы для
+            выполнения запросов.
+          </p>
+          <ul>
+            <li>persist($entity) — сохраняет новую сущность</li>
+            <li>
+              flush() — синхронизирует все изменения, сделанные в сущностях, с
+              базой данных.
+            </li>
+            <li>remove($entity) — удаляет сущность.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Пример создания сущности</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              // src/Controller/UserController.php
+              namespace App\Controller;
+
+              use App\Entity\User;
+              use Doctrine\ORM\EntityManagerInterface;
+              use Symfony\Component\HttpFoundation\Request;
+              use Symfony\Component\HttpFoundation\Response;
+              use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+              use Symfony\Component\Routing\Annotation\Route;
+
+              class UserController extends AbstractController
+              {
+                  /**
+                  * @Route("/user/create", name="user_create", methods={"POST"})
+                  */
+                  public function create(Request $request, EntityManagerInterface $entityManager): Response
+                  {
+                      // Получаем данные из POST-запроса
+                      $name = $request->request->get('name');
+                      $email = $request->request->get('email');
+
+                      // Создаем новый объект User
+                      $user = new User();
+                      $user->setName($name);
+                      $user->setEmail($email);
+
+                      // Сохраняем сущность
+                      $entityManager->persist($user); // Говорим Doctrine, что сущность должна быть сохранена
+                      $entityManager->flush(); // Применяем изменения и сохраняем данные в базе
+
+                      return new Response('Пользователь создан с ID: ' . $user->getId());
+                  }
+              }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Пример обновлении сущности</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              // src/Controller/UserController.php
+              namespace App\Controller;
+
+              use App\Entity\User;
+              use Doctrine\ORM\EntityManagerInterface;
+              use Symfony\Component\HttpFoundation\Request;
+              use Symfony\Component\HttpFoundation\Response;
+              use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+              use Symfony\Component\Routing\Annotation\Route;
+
+              class UserController extends AbstractController
+              {
+                  /**
+                  * @Route("/user/{user}", name="user_update", methods={"PUT"})
+                  */
+                  public function update(User $user, Request $request, EntityManagerInterface $entityManager): Response
+                  {
+                      // Получаем новые данные из PUT-запроса
+                      $name = $request->request->get('name');
+                      $email = $request->request->get('email');
+
+                      // Обновляем данные пользователя
+                      $user->setName($name);
+                      $user->setEmail($email);
+
+                      // Сохраняем изменения
+                      $entityManager->flush();  // Применяем изменения в базе данных
+
+                      return new Response('Пользователь с ID ' . $user->getId() . ' был обновлен.');
+                  }
+              }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Пример удаления сущности</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              // src/Controller/UserController.php
+              namespace App\Controller;
+
+              use App\Entity\User;
+              use Doctrine\ORM\EntityManagerInterface;
+              use Symfony\Component\HttpFoundation\Response;
+              use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+              use Symfony\Component\Routing\Annotation\Route;
+
+              class UserController extends AbstractController
+              {
+                  /**
+                  * @Route("/user/{user}", name="user_delete", methods={"DELETE"})
+                  */
+                  public function delete(User $user, EntityManagerInterface $entityManager): Response
+                  {
+                      // Удаляем сущность
+                      $entityManager->remove($user);  // Помечаем сущность для удаления
+                      $entityManager->flush();  // Применяем изменения в базе данных
+
+                      return new Response('Пользователь с ID ' . $user->getId() . ' был удален.');
+                  }
+              }
+
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h2>Repository</h2>
+        </section>
+        <section>
+          <h3>Репозиторий</h3>
+          <p>
+            В Symfony, репозитории (Repositories) используются для выполнения
+            запросов к базе данных.
+          </p>
+          <div>
+            Репозиторий может использоваться для выполнения запросов к базе
+            данных, таких как:
+            <ul>
+              <li>Поиск сущностей.</li>
+              <li>Фильтрация данных</li>
+              <li>Выполнение сложных запросов.</li>
+            </ul>
+          </div>
+          <p>
+            Репозитории находятся в папке src/Repository и связаны с сущностями
+            через Doctrine
+          </p>
+        </section>
+
+        <section>
+          <h3>
+            Пример использования EntityManager и Repository внутри контроллера
+          </h3>
+          <pre>
+            <code>
+              // src/Controller/UserController.php
+              namespace App\Controller;
+
+              use App\Entity\User;
+              use App\Repository\UserRepository;
+              use Doctrine\ORM\EntityManagerInterface;
+              use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+              use Symfony\Component\HttpFoundation\Response;
+              use Symfony\Component\Routing\Annotation\Route;
+
+              class UserController extends AbstractController
+              {
+                  private $userRepository;
+                  private $entityManager;
+
+                  public function __construct(UserRepository $userRepository, EntityManagerInterface $entityManager)
+                  {
+                      $this->userRepository = $userRepository;
+                      $this->entityManager = $entityManager;
+                  }
+
+                  
+                  #[Route('/users', name: "user_index")]
+                  public function index(): Response
+                  {
+                      // Получаем всех пользователей через репозиторий
+                      $users = $this->userRepository->findAll();
+
+                      // Возвращаем результат в виде ответа
+                      return $this->render('user/list.html.twig', [
+                          'users' => $users,
+                      ]);
+                  }
+
+              }
+
+
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Метод find</h3>
+          <p>
+            Метод find() используется для поиска сущности по её ID (или
+            первичному ключу)
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $user = $userRepository->find($id);
+            </code>
+          </pre>
+          <p>
+            Метод ищет сущность по её идентификатору (первичному ключу). В
+            результате возвращается объект сущности, если он найден, или null,
+            если сущность с таким идентификатором не существует.
+          </p>
+        </section>
+
+        <section>
+          <h3>Метод findBy</h3>
+          <p>
+            Метод findBy() используется для поиска сущностей по нескольким
+            критериям. Это позволяет вам получить список сущностей, которые
+            соответствуют определённым параметрам. Вы можете передавать массив
+            критериев, а также настраивать порядок сортировки и лимит выборки.
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $users = $userRepository->findBy(['name' => 'John', 'email' => 'john@example.com']);
+            </code>
+          </pre>
+          <p>
+            Этот метод позволяет искать все сущности, которые соответствуют
+            набору переданных критериев.
+          </p>
+        </section>
+        <section>
+          <h3>Ещё один пример использования findBy</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              // Находим пользователей с именем "John"
+              $users = $userRepository->findBy(['name' => 'John']);  
+
+              // Выведем имена всех найденных пользователей
+              foreach ($users as $user) {
+                  echo $user->getName();
+              }
+
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Пример findBy с доп. параметрами</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              // Находим пользователей с именем "John", сортируем по дате создания, ограничиваем 10 результатами
+              $users = $userRepository->findBy(
+                  ['name' => 'John'],           // Условие поиска
+                  ['createdAt' => 'DESC'],      // Сортировка по дате создания (по убыванию) (аналог ORDER BY)
+                  10,                           // Лимит на 10 пользователей (аналог LIMIT)
+                  0                             // Смещение (аналог OFFSET)
+              );
+
+              foreach ($users as $user) {
+                  echo $user->getName();
+              }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Метод findOneBy()</h3>
+          <p>
+            Метод findOneBy() используется для поиска одной сущности, которая
+            соответствует переданным критериям. В отличие от findBy(), который
+            возвращает массив сущностей, findOneBy() возвращает только одну
+            сущность или null, если такая сущность не найдена
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $user = $userRepository->findOneBy(['email' => 'john@example.com']);
+            </code>
+          </pre>
+          <p>
+            тот метод ищет одну сущность, которая соответствует переданным
+            критериям (например, email). Если таких сущностей несколько, метод
+            возвращает первую, которая подходит под условия
+          </p>
+        </section>
+
+        <section>
+          <h3>Метод findAll</h3>
+          <p>
+            Функция findAll() в Doctrine используется для получения всех записей
+            из таблицы, которая соответствует определенной сущности
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              // Получаем всех пользователей из базы данных
+              $users = $userRepository->findAll();
+            </code>
+          </pre>
+          <p>
+            В этом примере мы используем findAll() для извлечения всех
+            пользователей. Результатом будет массив объектов User, которые затем
+            передаются в шаблон для отображения.
+          </p>
+        </section>
+
+        <section>
+          <h3>Query Builder</h3>
+          <p>
+            QueryBuilder в Doctrine — это мощный инструмент для создания
+            динамических SQL-запросов. Он позволяет строить запросы на уровне
+            PHP, избегая необходимости писать сложный SQL вручную. Это также
+            позволяет строить более гибкие запросы с возможностью безопасной
+            работы с параметрами (что помогает избежать SQL-инъекций) и
+            поддерживает работу с сущностями Doctrine.
+          </p>
+        </section>
+
+        <section>
+          <h3>Пример использования query builder</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $qb = $userRepository->createQueryBuilder('u');
+              $qb->where('u.name = :value')
+                ->setParameter('value', $value);
+                
+              $query = $qb->getQuery(); // Аналогичен SELECT * FROM users u where u.name = value 
+              $results = $query->getResult(); // массив объектов User 
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Where</h3>
+          <p>
+            Метод where() добавляет условие для запроса. Вы можете добавлять
+            дополнительные условия с помощью andWhere() или orWhere().
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $qb->where('u.name = :name')
+              // или
+              $qb->andWhere('u.email = :email')
+                ->orWhere('u.age > :age')
+
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>setParameter()</h3>
+          <p>
+            Метод setParameter() используется для связывания параметра с
+            реальным значением. Это предотвращает SQL-инъекции, так как значения
+            не подставляются напрямую в запрос, а передаются как параметры.
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $qb->setParameter('name', 'John');
+            </code>
+          </pre>
+          <p>
+            В приведенном примере параметр :name будет заменен значением 'John'
+          </p>
+        </section>
+        <section>
+          <h3>orderBy()</h3>
+          <p>
+            Метод orderBy() используется для сортировки результатов. Вы
+            указываете поле, по которому будет производиться сортировка, и
+            направление сортировки (ASC — по возрастанию, DESC — по убыванию).
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $qb->orderBy('u.name', 'ASC')
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>join() и leftJoin()</h3>
+          <p>
+            Методы join() и leftJoin() используются для объединения сущностей. В
+            отличие от обычных SQL-запросов, где вы пишете JOIN, здесь
+            используется объектно-ориентированный подход.
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $qb->join('u.profile', 'p');
+              $qb->leftJoin('u.orders', 'o')
+            </code>
+          </pre>
+          <p>
+            join() создаст стандартный INNER JOIN, а leftJoin() — LEFT JOIN.
+          </p>
+        </section>
+        <section>
+          <h3>getQuery()</h3>
+          <p>
+            После того как все части запроса собраны, вы можете использовать
+            метод getQuery(), чтобы получить объект Query, который выполняет
+            запрос.
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $query = $qb->getQuery();
+              $results = $query->getResult();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>limit() и offset()</h3>
+          <p>
+            Методы limit() и offset() позволяют управлять количеством
+            возвращаемых результатов и реализовывать пагинацию.
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $qb->setMaxResults(10)  // Ограничение на 10 записей
+                ->setFirstResult(20) // Смещение на 20 записей
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Ещё один пример Query Builder</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $qb = $userRepository->createQueryBuilder('u');
+
+              $qb->select('u')
+                 ->where('u.name = :name')
+                 ->andWhere('u.createdAt > :date')
+                 ->setParameter('name', 'John')
+                 ->setParameter('date', new \DateTime('2020-01-01'))
+                 ->orderBy('u.name', 'ASC');
+              
+              $query = $qb->getQuery();
+              $users = $query->getResult();
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Пример QB с Join</h3>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $qb = $userRepository->createQueryBuilder('u');
+
+              $qb->select('u', 'p')
+                 ->join('u.profile', 'p')
+                 ->where('p.status = :status')
+                 ->setParameter('status', 'active');
+              
+              $query = $qb->getQuery();
+              $users = $query->getResult();
+              
             </code>
           </pre>
         </section>
