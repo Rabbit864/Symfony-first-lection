@@ -1,179 +1,179 @@
 <html lang="ru">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reset.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reveal.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/theme/simple.min.css"
-      id="theme"
-    />
-    <link rel="stylesheet" href="highlight-phpstorm-light-theme.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap"
-    />
-    <style>
-      :root {
-        --r-main-font: 'Roboto', 'Noto Color Emoji', sans-serif;
-        --r-heading-font: 'Roboto', 'Noto Color Emoji', sans-serif;
-        --r-code-font: 'Roboto Mono', 'Noto Color Emoji', monospace;
-        --r-block-margin: 10px;
-      }
-      .reveal pre {
-        font-size: 0.5em;
-      }
-      .nohighlight {
-        padding: 1em !important;
-      }
-      .reveal .hljs {
-        min-height: auto;
-      }
-      td.hljs-ln-code {
-        white-space: pre;
-      }
-      .reveal h1,
-      .reveal h2,
-      .reveal h3,
-      .reveal h4,
-      .reveal h5,
-      .reveal h6,
-      .reveal pre,
-      .reveal p,
-      .reveal img {
-        margin: 0 var(--r-block-margin) calc(var(--r-block-margin) * 2);
-      }
-      .reveal pre {
-        width: auto;
-      }
 
-      .reveal .r-stack > * {
-        margin: 0;
-      }
-      .horizontal {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-      }
-      .horizontal > * {
-        flex-grow: 1;
-      }
-      .horizontal-half > * {
-        flex-grow: 0 !important;
-        width: calc(50% - var(--r-block-margin) * 2) !important;
-      }
+<head>
+  <meta charset="utf-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reset.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reveal.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/theme/simple.min.css"
+    id="theme" />
+  <link rel="stylesheet" href="highlight-phpstorm-light-theme.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" />
+  <style>
+    :root {
+      --r-main-font: 'Roboto', 'Noto Color Emoji', sans-serif;
+      --r-heading-font: 'Roboto', 'Noto Color Emoji', sans-serif;
+      --r-code-font: 'Roboto Mono', 'Noto Color Emoji', monospace;
+      --r-block-margin: 10px;
+    }
 
-      ul {
-        font-size: 30px;
-      }
+    .reveal pre {
+      font-size: 0.5em;
+    }
 
-      p {
-        font-size: 30px;
-      }
-    </style>
-    <title>Symfony</title>
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section>
-          <h2>Symfony</h2>
-        </section>
+    .nohighlight {
+      padding: 1em !important;
+    }
 
-        <section>
-          <h3>Что такое Symfony</h3>
-          <p>
-            Symfony — это популярный PHP-фреймворк с открытым исходным кодом,
-            который предназначен для разработки сложных веб-приложений и API. Он
-            предоставляет мощный набор компонентов, которые позволяют
-            разработчикам быстро строить качественные и масштабируемые
-            веб-приложения. Symfony ориентирован на гибкость и расширяемость, и
-            часто используется для создания крупных и сложных веб-проектов,
-            таких как корпоративные сайты, интернет-магазины, платформы для
-            работы с данными и многие другие.
-          </p>
-        </section>
+    .reveal .hljs {
+      min-height: auto;
+    }
 
-        <section>
-          <h3>Что такое Framework</h3>
-          <p>
-            Фреймворк (Framework) — это набор готовых инструментов и библиотек,
-            которые предоставляют структуру и шаблоны для разработки
-            программного обеспечения. Фреймворк упрощает разработку, обеспечивая
-            решение распространённых задач, таких как обработка запросов,
-            маршрутизация, взаимодействие с базой данных, аутентификация и
-            другие.
-          </p>
-        </section>
+    td.hljs-ln-code {
+      white-space: pre;
+    }
 
-        <section>
-          <h3>Установка Symfony</h3>
-          <pre>
+    .reveal h1,
+    .reveal h2,
+    .reveal h3,
+    .reveal h4,
+    .reveal h5,
+    .reveal h6,
+    .reveal pre,
+    .reveal p,
+    .reveal img {
+      margin: 0 var(--r-block-margin) calc(var(--r-block-margin) * 2);
+    }
+
+    .reveal pre {
+      width: auto;
+    }
+
+    .reveal .r-stack>* {
+      margin: 0;
+    }
+
+    .horizontal {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .horizontal>* {
+      flex-grow: 1;
+    }
+
+    .horizontal-half>* {
+      flex-grow: 0 !important;
+      width: calc(50% - var(--r-block-margin) * 2) !important;
+    }
+
+    ul {
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 30px;
+    }
+  </style>
+  <title>Symfony</title>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>Symfony</h2>
+      </section>
+
+      <section>
+        <h3>Что такое Symfony</h3>
+        <p>
+          Symfony — это популярный PHP-фреймворк с открытым исходным кодом,
+          который предназначен для разработки сложных веб-приложений и API. Он
+          предоставляет мощный набор компонентов, которые позволяют
+          разработчикам быстро строить качественные и масштабируемые
+          веб-приложения. Symfony ориентирован на гибкость и расширяемость, и
+          часто используется для создания крупных и сложных веб-проектов,
+          таких как корпоративные сайты, интернет-магазины, платформы для
+          работы с данными и многие другие.
+        </p>
+      </section>
+
+      <section>
+        <h3>Что такое Framework</h3>
+        <p>
+          Фреймворк (Framework) — это набор готовых инструментов и библиотек,
+          которые предоставляют структуру и шаблоны для разработки
+          программного обеспечения. Фреймворк упрощает разработку, обеспечивая
+          решение распространённых задач, таких как обработка запросов,
+          маршрутизация, взаимодействие с базой данных, аутентификация и
+          другие.
+        </p>
+      </section>
+
+      <section>
+        <h3>Установка Symfony</h3>
+        <pre>
             <code class="language-php" data-trim >
               1) composer create-project symfony/skeleton:"6.4.x" my_project_directory
               2) cd my_project_directory
               3) composer require webapp
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h2>Twig</h2>
-        </section>
+      <section>
+        <h2>Twig</h2>
+      </section>
 
-        <section>
-          <h3>Что такое Twig</h3>
-          <p>
-            Twig — это шаблонизатор для PHP, который используется для создания
-            HTML-шаблонов. Он помогает разделить логику работы с данными и
-            представление этих данных на странице.
-          </p>
-        </section>
+      <section>
+        <h3>Что такое Twig</h3>
+        <p>
+          Twig — это шаблонизатор для PHP, который используется для создания
+          HTML-шаблонов. Он помогает разделить логику работы с данными и
+          представление этих данных на странице.
+        </p>
+      </section>
 
-        <section>
-          <h3>Twig в symfony</h3>
-          <p>
-            Все шаблоны обычно находятся в папке templates/ в корне проекта
-            Symfony, и для рендеринга страницы достаточно в контроллере
-            использовать метод render()
-          </p>
-        </section>
+      <section>
+        <h3>Twig в symfony</h3>
+        <p>
+          Все шаблоны обычно находятся в папке templates/ в корне проекта
+          Symfony, и для рендеринга страницы достаточно в контроллере
+          использовать метод render()
+        </p>
+      </section>
 
-        <section>
-          <h3>Синтаксис функции render</h3>
-          <pre>
+      <section>
+        <h3>Синтаксис функции render</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $this->render(string $view, array $parameters = [])
             </code>
           </pre>
 
-          <ul>
-            <li>
-              $view — это путь к шаблону, который ты хочешь отрендерить. В
-              Symfony по умолчанию это путь относительно папки templates/.
-              Например, если у вас шаблон templates/example/index.html.twig, то
-              параметр $view будет выглядеть так: 'example/index.html.twig'
-            </li>
-            <li>
-              $parameters — это массив данных, которые вы передаете в шаблон.
-              Эти данные доступны в шаблоне через переменные. Например, если вы
-              передаете в шаблон переменную name, то в шаблоне вы можете
-              использовать её как {{ name }}
-            </li>
-          </ul>
-        </section>
+        <ul>
+          <li>
+            $view — это путь к шаблону, который ты хочешь отрендерить. В
+            Symfony по умолчанию это путь относительно папки templates/.
+            Например, если у вас шаблон templates/example/index.html.twig, то
+            параметр $view будет выглядеть так: 'example/index.html.twig'
+          </li>
+          <li>
+            $parameters — это массив данных, которые вы передаете в шаблон.
+            Эти данные доступны в шаблоне через переменные. Например, если вы
+            передаете в шаблон переменную name, то в шаблоне вы можете
+            использовать её как {{ name }}
+          </li>
+        </ul>
+      </section>
 
-        <section>
-          <h3>Пример использования в функции</h3>
-          <pre>
+      <section>
+        <h3>Пример использования в функции</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               class ExampleController extends AbstractController
               {
@@ -190,11 +190,11 @@
               }
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h3>Пример использования в функции</h3>
-          <pre>
+      <section>
+        <h3>Пример использования в функции</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 {# templates/example/index.html.twig #}
@@ -210,19 +210,19 @@
               </script>
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h3>Условные выражения в twig</h3>
-          <p>
-            Конструкция {% if %} используется для проверки условий. Внутри можно
-            использовать логические операторы, такие как and, or, not
-          </p>
-        </section>
+      <section>
+        <h3>Условные выражения в twig</h3>
+        <p>
+          Конструкция {% if %} используется для проверки условий. Внутри можно
+          использовать логические операторы, такие как and, or, not
+        </p>
+      </section>
 
-        <section>
-          <h3>Пример конструкции if</h3>
-          <pre>
+      <section>
+        <h3>Пример конструкции if</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 {% if age >= 18 %}
@@ -233,16 +233,16 @@
               </script>
             </code>
           </pre>
-          <p>
-            Здесь проверяется, если возраст (age) больше или равен 18, то
-            выводится сообщение о совершеннолетии, в противном случае — о
-            несовершеннолетии.
-          </p>
-        </section>
+        <p>
+          Здесь проверяется, если возраст (age) больше или равен 18, то
+          выводится сообщение о совершеннолетии, в противном случае — о
+          несовершеннолетии.
+        </p>
+      </section>
 
-        <section>
-          <h3>Ещё пример if</h3>
-          <pre>
+      <section>
+        <h3>Ещё пример if</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 {% if age >= 18 %}
@@ -256,12 +256,12 @@
               </script>
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h3>Логические операторы в if</h3>
-          <p>Twig поддерживает логические операторы: and, or, not</p>
-          <pre>
+      <section>
+        <h3>Логические операторы в if</h3>
+        <p>Twig поддерживает логические операторы: and, or, not</p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 {% if age >= 18 and isAdmin %}
@@ -272,19 +272,19 @@
               </script>
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h3>Циклы в twig</h3>
-          <p>
-            Циклы в Twig используются для перебора массивов, объектов и других
-            итерируемых структур
-          </p>
-        </section>
+      <section>
+        <h3>Циклы в twig</h3>
+        <p>
+          Циклы в Twig используются для перебора массивов, объектов и других
+          итерируемых структур
+        </p>
+      </section>
 
-        <section>
-          <h3>Пример цикла</h3>
-          <pre>
+      <section>
+        <h3>Пример цикла</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 {% for user in users %}
@@ -295,19 +295,19 @@
               </script>
             </code>
           </pre>
-          <p>
-            В этом примере перебираются все элементы массива users. Если массив
-            пустой, будет выведено сообщение "Пользователей нет."
-          </p>
-        </section>
+        <p>
+          В этом примере перебираются все элементы массива users. Если массив
+          пустой, будет выведено сообщение "Пользователей нет."
+        </p>
+      </section>
 
-        <section>
-          <h3>Ещё один пример цикла с использования loop</h3>
-          <p>
-            Можно получить индекс текущего элемента с помощью специальной
-            переменной loop.index или loop.index0 (индексация с 0).
-          </p>
-          <pre>
+      <section>
+        <h3>Ещё один пример цикла с использования loop</h3>
+        <p>
+          Можно получить индекс текущего элемента с помощью специальной
+          переменной loop.index или loop.index0 (индексация с 0).
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 {% for user in users %}
@@ -316,11 +316,11 @@
               </script>
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h3>Switch в twig</h3>
-          <pre>
+      <section>
+        <h3>Switch в twig</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 {% switch color %}
@@ -336,20 +336,20 @@
               </script>
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h3>Наследование шаблонов в twig</h3>
-          <p>
-            Twig позволяет создавать блоки в шаблонах и наследовать их в других
-            шаблонах. Это особенно полезно для создания базовых шаблонов и
-            переопределения их частей
-          </p>
-        </section>
+      <section>
+        <h3>Наследование шаблонов в twig</h3>
+        <p>
+          Twig позволяет создавать блоки в шаблонах и наследовать их в других
+          шаблонах. Это особенно полезно для создания базовых шаблонов и
+          переопределения их частей
+        </p>
+      </section>
 
-        <section>
-          <h3>Пример базавого шаблона</h3>
-          <pre>
+      <section>
+        <h3>Пример базавого шаблона</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 <!DOCTYPE html>
@@ -374,15 +374,15 @@
               </script>
             </code>
           </pre>
-          <p>
-            В этом примере мы создаем блоки title, header, content и footer,
-            которые можно переопределить в дочерних шаблонах.
-          </p>
-        </section>
+        <p>
+          В этом примере мы создаем блоки title, header, content и footer,
+          которые можно переопределить в дочерних шаблонах.
+        </p>
+      </section>
 
-        <section>
-          <h3>Дочерний шаблон</h3>
-          <pre>
+      <section>
+        <h3>Дочерний шаблон</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 {% extends 'base.html.twig' %}
@@ -399,36 +399,36 @@
               </script>
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h2>Роутинг</h2>
-        </section>
+      <section>
+        <h2>Роутинг</h2>
+      </section>
 
-        <section>
-          <h3>Роутинг</h3>
-          <p>
-            В Symfony роутинг отвечает за определение того, как HTTP-запросы
-            должны быть направлены к определенным контроллерам в вашем
-            приложении. Роутинг — это процесс сопоставления URL с контроллерами,
-            а также параметрами, которые можно передать этим контроллерам.
-          </p>
-        </section>
+      <section>
+        <h3>Роутинг</h3>
+        <p>
+          В Symfony роутинг отвечает за определение того, как HTTP-запросы
+          должны быть направлены к определенным контроллерам в вашем
+          приложении. Роутинг — это процесс сопоставления URL с контроллерами,
+          а также параметрами, которые можно передать этим контроллерам.
+        </p>
+      </section>
 
-        <section>
-          <h3>Создание контроллера</h3>
-          <p>Для создания контроллера используйте команду:</p>
-          <pre>
+      <section>
+        <h3>Создание контроллера</h3>
+        <p>Для создания контроллера используйте команду:</p>
+        <pre>
             <code>
               php bin/console make:controller YourController
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h3>Роутинг</h3>
+      <section>
+        <h3>Роутинг</h3>
 
-          <pre>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               namespace App\Controller;
 
@@ -445,17 +445,17 @@
               }
             </code>
           </pre>
-          <p>
-            #[Route('/hello', name: 'hello')] — атрибут маршрута, который
-            привязывает URL. В данном примере когда пользователь зайдет по урлу
-            /hello ему вернется содержимое шаблона hello.html.twig. Имя урла
-            должно быть уникальным
-          </p>
-        </section>
+        <p>
+          #[Route('/hello', name: 'hello')] — атрибут маршрута, который
+          привязывает URL. В данном примере когда пользователь зайдет по урлу
+          /hello ему вернется содержимое шаблона hello.html.twig. Имя урла
+          должно быть уникальным
+        </p>
+      </section>
 
-        <section>
-          <h3>Роутинг с параметром</h3>
-          <pre>
+      <section>
+        <h3>Роутинг с параметром</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               namespace App\Controller;
 
@@ -474,24 +474,24 @@
               }
             </code>
           </pre>
-          <p>
-            Когда пользователь посещает /greet/John, значение John передается в
-            метод как параметр $name.
-          </p>
-          <p>
-            По умолчанию все параметры имеют тип string, но вы можете менять тип
-            меняя тип в аргументах функции
-          </p>
-          <p>
-            В атрибуте маршрута установлено значение по умолчанию для параметра
-            name — "Guest", если параметр не будет передан в URL.
-          </p>
-        </section>
+        <p>
+          Когда пользователь посещает /greet/John, значение John передается в
+          метод как параметр $name.
+        </p>
+        <p>
+          По умолчанию все параметры имеют тип string, но вы можете менять тип
+          меняя тип в аргументах функции
+        </p>
+        <p>
+          В атрибуте маршрута установлено значение по умолчанию для параметра
+          name — "Guest", если параметр не будет передан в URL.
+        </p>
+      </section>
 
-        <section>
-          <h3>Изменение метода роутинга</h3>
-          <h5>Ещё один пример на следующем слайде</h5>
-          <pre>
+      <section>
+        <h3>Изменение метода роутинга</h3>
+        <h5>Ещё один пример на следующем слайде</h5>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               namespace App\Controller;
 
@@ -508,10 +508,10 @@
               }
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <pre>
+      <section>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               namespace App\Controller;
 
@@ -528,17 +528,17 @@
               }
             </code>
           </pre>
-          <p>
-            Мы указываем методы HTTP (methods: ['GET'] или methods: ['POST']) в
-            атрибуте маршрута для ограничения типов запросов, которые могут быть
-            использованы для данного маршрута.
-          </p>
-          <p>Возможные методы HTTP: GET, POST, PUT, PATCH, DELETE</p>
-        </section>
+        <p>
+          Мы указываем методы HTTP (methods: ['GET'] или methods: ['POST']) в
+          атрибуте маршрута для ограничения типов запросов, которые могут быть
+          использованы для данного маршрута.
+        </p>
+        <p>Возможные методы HTTP: GET, POST, PUT, PATCH, DELETE</p>
+      </section>
 
-        <section>
-          <h3>Генерация урла с помощью имени маршрута</h3>
-          <pre>
+      <section>
+        <h3>Генерация урла с помощью имени маршрута</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
                 namespace App\Controller;
 
@@ -560,87 +560,87 @@
 
             </code>
           </pre>
-          <p>
-            Мы генерируем URL для маршрута с именем hello, передавая параметр
-            name="Иван", и перенаправляем пользователя на сгенерированный URL
-          </p>
-          <p>Для перенаправления пользователя используется метод redirect</p>
-        </section>
+        <p>
+          Мы генерируем URL для маршрута с именем hello, передавая параметр
+          name="Иван", и перенаправляем пользователя на сгенерированный URL
+        </p>
+        <p>Для перенаправления пользователя используется метод redirect</p>
+      </section>
 
-        <section>
-          <h3>Генерация ссылки внутри twig</h3>
-          <p>
-            В Symfony с использованием Twig для генерации ссылок можно
-            использовать встроенную функцию path()
-          </p>
-          <pre>
+      <section>
+        <h3>Генерация ссылки внутри twig</h3>
+        <p>
+          В Symfony с использованием Twig для генерации ссылок можно
+          использовать встроенную функцию path()
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 <a href="{{ path('route_name') }}">Ссылка</a>
               </script>
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h3>Генерация ссылки с параметрами</h3>
-          <pre>
+      <section>
+        <h3>Генерация ссылки с параметрами</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 <a href="{{ path('route_name', {'param1': 'value1', 'param2': 'value2'}) }}">Ссылка с параметрами</a>
               </script>
             </code>
           </pre>
-          <p>Если маршруту нужны параметры, их можно передать как массив</p>
-        </section>
-        <section>
-          <h2>HTML формы</h2>
-        </section>
-        <section>
-          <h3>Формы html</h3>
-          <p>
-            В HTML форма (&ltform&gt) используется для отправки данных на
-            сервер, где они могут быть обработаны
-          </p>
-        </section>
-        <section>
-          <h3>Основные элементы формы</h3>
-          <ul>
-            <li>
-              &ltform&gt — корневой элемент формы, который определяет её
-              границы.
-            </li>
-            <li>&ltinput&gt — основной элемент для ввода данных.</li>
-            <li>&lttextarea&gt — многострочное текстовое поле для ввода.</li>
-            <li>&ltselect&gt и &ltoption&gt — выпадающий список.</li>
-            <li>
-              &ltbutton&gt — кнопка для отправки формы или для выполнения
-              действия.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3>Оснонвые атрибуты элемента&ltform&gt</h3>
-          <ul>
-            <li>
-              action — URL, куда отправляются данные формы. Если этот атрибут не
-              указан, данные отправляются на тот же URL, где находится форма.
-            </li>
-            <li>
-              method — метод отправки данных. Основные методы:GET — отправляет
-              данные в URL (параметры добавляются к адресу). Подходит для поиска
-              и отображения данных. POST — отправляет данные в теле
-              HTTP-запроса. Это более безопасный способ, который используется
-              для отправки больших объемов данных.
-            </li>
-            <li>
-              name — имя формы, которое используется для её идентификации.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3>Пример базовой формы</h3>
-          <pre>
+        <p>Если маршруту нужны параметры, их можно передать как массив</p>
+      </section>
+      <section>
+        <h2>HTML формы</h2>
+      </section>
+      <section>
+        <h3>Формы html</h3>
+        <p>
+          В HTML форма (&ltform&gt) используется для отправки данных на
+          сервер, где они могут быть обработаны
+        </p>
+      </section>
+      <section>
+        <h3>Основные элементы формы</h3>
+        <ul>
+          <li>
+            &ltform&gt — корневой элемент формы, который определяет её
+            границы.
+          </li>
+          <li>&ltinput&gt — основной элемент для ввода данных.</li>
+          <li>&lttextarea&gt — многострочное текстовое поле для ввода.</li>
+          <li>&ltselect&gt и &ltoption&gt — выпадающий список.</li>
+          <li>
+            &ltbutton&gt — кнопка для отправки формы или для выполнения
+            действия.
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Оснонвые атрибуты элемента&ltform&gt</h3>
+        <ul>
+          <li>
+            action — URL, куда отправляются данные формы. Если этот атрибут не
+            указан, данные отправляются на тот же URL, где находится форма.
+          </li>
+          <li>
+            method — метод отправки данных. Основные методы:GET — отправляет
+            данные в URL (параметры добавляются к адресу). Подходит для поиска
+            и отображения данных. POST — отправляет данные в теле
+            HTTP-запроса. Это более безопасный способ, который используется
+            для отправки больших объемов данных.
+          </li>
+          <li>
+            name — имя формы, которое используется для её идентификации.
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Пример базовой формы</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
               <form action="/submit" method="POST">
@@ -655,39 +655,39 @@
             </script>
             </code>
           </pre>
-        </section>
-        <section>
-          <h3>Основные элементы ввода</h3>
-          <pre>
+      </section>
+      <section>
+        <h3>Основные элементы ввода</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 <input type="text" name="username" placeholder="Введите имя пользователя">
               </script>
             </code>
           </pre>
-          <p>
-            Текстовые поля (&ltinput type="text"&gt): Используются для ввода
-            обычного текста
-          </p>
-        </section>
+        <p>
+          Текстовые поля (&ltinput type="text"&gt): Используются для ввода
+          обычного текста
+        </p>
+      </section>
 
-        <section>
-          <h3>Основные элементы ввода</h3>
-          <pre>
+      <section>
+        <h3>Основные элементы ввода</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 <input type="password" name="password" placeholder="Введите пароль">
               </script>
             </code>
           </pre>
-          <p>
-            Парольные поля. Показывают звездочки или точки вместо введенного
-            текста
-          </p>
-        </section>
-        <section>
-          <h3>Основные элементы ввода</h3>
-          <pre>
+        <p>
+          Парольные поля. Показывают звездочки или точки вместо введенного
+          текста
+        </p>
+      </section>
+      <section>
+        <h3>Основные элементы ввода</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 <button>Отправить</button>
@@ -696,22 +696,22 @@
               </script>
             </code>
           </pre>
-          <p>Кнопка для отправки формы</p>
-        </section>
-        <section>
-          <h3>Основные элементы ввода</h3>
-          <pre>
+        <p>Кнопка для отправки формы</p>
+      </section>
+      <section>
+        <h3>Основные элементы ввода</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 <input type="checkbox" name="subscribe" value="yes">
               </script>
             </code>
           </pre>
-          <p>Позволяют пользователю выбрать одну или несколько опций</p>
-        </section>
-        <section>
-          <h3>Основные элементы ввода</h3>
-          <pre>
+        <p>Позволяют пользователю выбрать одну или несколько опций</p>
+      </section>
+      <section>
+        <h3>Основные элементы ввода</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 <input type="radio" name="gender" value="male">
@@ -720,25 +720,25 @@
               </script>
             </code>
           </pre>
-          <p>Позволяют выбрать только одну опцию из множества</p>
-        </section>
-        <section>
-          <h3>Основные элементы ввода</h3>
-          <pre>
+        <p>Позволяют выбрать только одну опцию из множества</p>
+      </section>
+      <section>
+        <h3>Основные элементы ввода</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 <textarea name="message" rows="4" cols="50" placeholder="Введите ваше сообщение"></textarea>
               </script>
             </code>
           </pre>
-          <p>
-            Для ввода большего объема текста, например, сообщений или
-            комментариев
-          </p>
-        </section>
-        <section>
-          <h3>Основные элементы ввода</h3>
-          <pre>
+        <p>
+          Для ввода большего объема текста, например, сообщений или
+          комментариев
+        </p>
+      </section>
+      <section>
+        <h3>Основные элементы ввода</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 <select name="country">
@@ -749,45 +749,45 @@
               </script>
             </code>
           </pre>
-          <p>Позволяют выбрать один или несколько элементов из списка</p>
-        </section>
-        <section>
-          <h3>Атрибуты для элементов формы</h3>
-          <ul>
-            <li>required — обязательный для заполнения элемент.</li>
-            <li>
-              placeholder — текст-заполнитель, который исчезает при вводе
-              данных.
-            </li>
-            <li>
-              value — задает значение для некоторых типов элементов, например,
-              для кнопок или радио-кнопок.
-            </li>
-          </ul>
-        </section>
+        <p>Позволяют выбрать один или несколько элементов из списка</p>
+      </section>
+      <section>
+        <h3>Атрибуты для элементов формы</h3>
+        <ul>
+          <li>required — обязательный для заполнения элемент.</li>
+          <li>
+            placeholder — текст-заполнитель, который исчезает при вводе
+            данных.
+          </li>
+          <li>
+            value — задает значение для некоторых типов элементов, например,
+            для кнопок или радио-кнопок.
+          </li>
+        </ul>
+      </section>
 
-        <section>
-          <h3>Переопределение метода в Symfony</h3>
-          <p>
-            Для того чтобы было возможно отправить запросы PUT или DELETE в
-            Symfony нужно включить специальную опцию http_method_override.
-            Данная опция расположена по адресу config/packages/framework.yaml
-          </p>
-        </section>
+      <section>
+        <h3>Переопределение метода в Symfony</h3>
+        <p>
+          Для того чтобы было возможно отправить запросы PUT или DELETE в
+          Symfony нужно включить специальную опцию http_method_override.
+          Данная опция расположена по адресу config/packages/framework.yaml
+        </p>
+      </section>
 
-        <section>
-          <h3>Переопределение метода в Symfony</h3>
-          <p>
-            Symfony позволяет переопределять HTTP-метод с помощью специального
-            поля в форме, которое называется _method. Это скрытое поле будет
-            передаваться на сервер, и Symfony будет интерпретировать его как
-            указание на метод, который нужно использовать. Таким образом, можно
-            отправить запрос с методом, отличным от GET или POST.
-          </p>
-        </section>
-        <section>
-          <h3>Пример переопределения метода на PUT</h3>
-          <pre>
+      <section>
+        <h3>Переопределение метода в Symfony</h3>
+        <p>
+          Symfony позволяет переопределять HTTP-метод с помощью специального
+          поля в форме, которое называется _method. Это скрытое поле будет
+          передаваться на сервер, и Symfony будет интерпретировать его как
+          указание на метод, который нужно использовать. Таким образом, можно
+          отправить запрос с методом, отличным от GET или POST.
+        </p>
+      </section>
+      <section>
+        <h3>Пример переопределения метода на PUT</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               <script type="text/template">
                 <form action="{{ path('user_update', {'id': user.id}) }}" method="post">
@@ -802,54 +802,54 @@
               </script>
             </code>
           </pre>
-          <p>
-            В этом примере мы создаем форму для обновления пользователя.
-            Несмотря на то, что форма использует POST метод, скрытое поле
-            _method с значением PUT указывает серверу, что фактически нужно
-            использовать метод PUT
-          </p>
-        </section>
-        <section>
-          <h2>Request в Symfony</h2>
-        </section>
-        <section>
-          <h3>Класс Request</h3>
-          <p>
-            В Symfony класс Request является частью компонента HttpFoundation и
-            представляет собой объект, который инкапсулирует все данные
-            HTTP-запроса. Он предоставляет удобный интерфейс для доступа к
-            данным запроса, таким как параметры GET и POST, заголовки, куки,
-            файлы и т. д.
-          </p>
-        </section>
-        <section>
-          <h3>Пример получения GET запроса</h3>
-          <pre>
+        <p>
+          В этом примере мы создаем форму для обновления пользователя.
+          Несмотря на то, что форма использует POST метод, скрытое поле
+          _method с значением PUT указывает серверу, что фактически нужно
+          использовать метод PUT
+        </p>
+      </section>
+      <section>
+        <h2>Request в Symfony</h2>
+      </section>
+      <section>
+        <h3>Класс Request</h3>
+        <p>
+          В Symfony класс Request является частью компонента HttpFoundation и
+          представляет собой объект, который инкапсулирует все данные
+          HTTP-запроса. Он предоставляет удобный интерфейс для доступа к
+          данным запроса, таким как параметры GET и POST, заголовки, куки,
+          файлы и т. д.
+        </p>
+      </section>
+      <section>
+        <h3>Пример получения GET запроса</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $request->query->get('param_name'); // Получить значение параметра 'param_name' из GET-запроса
             </code>
           </pre>
-          <p>
-            Чтобы получить параметры из строки запроса, используйте метод
-            query->get()
-          </p>
-        </section>
-        <section>
-          <h3>Пример получения POST запроса</h3>
-          <pre>
+        <p>
+          Чтобы получить параметры из строки запроса, используйте метод
+          query->get()
+        </p>
+      </section>
+      <section>
+        <h3>Пример получения POST запроса</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $request->request->get('param_name'); // Получить значение параметра 'param_name' из POST-запроса
             </code>
           </pre>
-          <p>
-            Чтобы получить параметры из POST-запроса, используйте метод
-            request->get()
-          </p>
-        </section>
+        <p>
+          Чтобы получить параметры из POST-запроса, используйте метод
+          request->get()
+        </p>
+      </section>
 
-        <section>
-          <h3>Пример обработки POST-запроса в контроллере</h3>
-          <pre>
+      <section>
+        <h3>Пример обработки POST-запроса в контроллере</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               // src/Controller/UserController.php
               namespace App\Controller;
@@ -883,10 +883,10 @@
               
             </code>
           </pre>
-        </section>
-        <section>
-          <h3>Пример обработки GET-запроса в контроллере</h3>
-          <pre>
+      </section>
+      <section>
+        <h3>Пример обработки GET-запроса в контроллере</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               // src/Controller/GreetController.php
               namespace App\Controller;
@@ -917,46 +917,46 @@
 
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h2>Сущности и Миграции</h2>
-        </section>
-        <section>
-          <h3>Сущности и Миграции</h3>
-          <p>
-            В Symfony миграции и сущности (Entity) используются в связке с
-            Doctrine, что позволяет эффективно работать с базой данных. Миграции
-            — это способ управления изменениями в структуре базы данных, а
-            сущности — это классы, которые отражают таблицы в базе данных.
-            Давайте разберемся, как это работает на практике.
-          </p>
-        </section>
+      <section>
+        <h2>Сущности и Миграции</h2>
+      </section>
+      <section>
+        <h3>Сущности и Миграции</h3>
+        <p>
+          В Symfony миграции и сущности (Entity) используются в связке с
+          Doctrine, что позволяет эффективно работать с базой данных. Миграции
+          — это способ управления изменениями в структуре базы данных, а
+          сущности — это классы, которые отражают таблицы в базе данных.
+          Давайте разберемся, как это работает на практике.
+        </p>
+      </section>
 
-        <section>
-          <h3>Сущности(Entities)</h3>
-          <p>
-            Сущности в Doctrine представляют собой объекты, которые отражают
-            таблицы в базе данных. Сущности связываются с таблицами через
-            аннотации или YAML/XML-конфигурации.
-          </p>
-        </section>
-        <section>
-          <h3>Команда для создания сущностей</h3>
-          <pre>
+      <section>
+        <h3>Сущности(Entities)</h3>
+        <p>
+          Сущности в Doctrine представляют собой объекты, которые отражают
+          таблицы в базе данных. Сущности связываются с таблицами через
+          аннотации или YAML/XML-конфигурации.
+        </p>
+      </section>
+      <section>
+        <h3>Команда для создания сущностей</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               php bin/console make:entity
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h3>Пример сущности</h3>
-          <p>
-            Допустим, мы создаем сущность User, которая будет представлять
-            пользователя в нашей системе.
-          </p>
-          <pre>
+      <section>
+        <h3>Пример сущности</h3>
+        <p>
+          Допустим, мы создаем сущность User, которая будет представлять
+          пользователя в нашей системе.
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               // src/Entity/User.php
               namespace App\Entity;
@@ -1007,117 +1007,117 @@
               }              
             </code>
           </pre>
-        </section>
-        <section>
-          <h3>Атрибуты сущнсоти</h3>
-          <p>
-            В предыдущем примере мы В этом примере мы используем атрибуты для
-            задания метаданных сущности. Это делается через синтаксис
-            #[ATTRIBUTES], который применяется к свойствам класса и самому
-            классу.
-          </p>
-        </section>
-        <section>
-          <h3>Пояснение к атрибутам</h3>
-          <ul>
-            <li>
-              #[ORM\Entity(repositoryClass: "App\Repository\UserRepository")]:
-              Это атрибут, который указывает, что класс является сущностью
-              Doctrine и связывается с репозиторием UserRepository.
-            </li>
-            <li>
-              #[ORM\Id]: Обозначает, что это поле является идентификатором
-              (первичным ключом).
-            </li>
-            <li>
-              #[ORM\GeneratedValue]: Указывает, что значение этого поля будет
-              генерироваться автоматически.
-            </li>
-            <li>
-              #[ORM\Column(type: "integer")]: Указывает, что тип столбца в базе
-              данных будет integer.
-            </li>
-            <li>
-              #[ORM\Column(type: "string", length: 100)]: Указывает, что столбец
-              будет строкой (VARCHAR) длиной 100 символов.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3>Дополнение</h3>
-          <ul>
-            <li>
-              Мы используем типы данных PHP для определения свойств (например,
-              int, string), которые будут соответствовать соответствующим типам
-              в базе данных.
-            </li>
-            <li>
-              Для работы с полями сущности (например, для получения и изменения
-              значений полей) создаются стандартные геттеры и сеттеры.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3>Миграции</h3>
-          <p>
-            После того как вы создали сущность с атрибутами, необходимо создать
-            миграцию для синхронизации структуры базы данных с новой сущностью.
-          </p>
-        </section>
-        <section>
-          <h3>Команда для создания миграции</h3>
-          <pre>
+      </section>
+      <section>
+        <h3>Атрибуты сущнсоти</h3>
+        <p>
+          В предыдущем примере мы В этом примере мы используем атрибуты для
+          задания метаданных сущности. Это делается через синтаксис
+          #[ATTRIBUTES], который применяется к свойствам класса и самому
+          классу.
+        </p>
+      </section>
+      <section>
+        <h3>Пояснение к атрибутам</h3>
+        <ul>
+          <li>
+            #[ORM\Entity(repositoryClass: "App\Repository\UserRepository")]:
+            Это атрибут, который указывает, что класс является сущностью
+            Doctrine и связывается с репозиторием UserRepository.
+          </li>
+          <li>
+            #[ORM\Id]: Обозначает, что это поле является идентификатором
+            (первичным ключом).
+          </li>
+          <li>
+            #[ORM\GeneratedValue]: Указывает, что значение этого поля будет
+            генерироваться автоматически.
+          </li>
+          <li>
+            #[ORM\Column(type: "integer")]: Указывает, что тип столбца в базе
+            данных будет integer.
+          </li>
+          <li>
+            #[ORM\Column(type: "string", length: 100)]: Указывает, что столбец
+            будет строкой (VARCHAR) длиной 100 символов.
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Дополнение</h3>
+        <ul>
+          <li>
+            Мы используем типы данных PHP для определения свойств (например,
+            int, string), которые будут соответствовать соответствующим типам
+            в базе данных.
+          </li>
+          <li>
+            Для работы с полями сущности (например, для получения и изменения
+            значений полей) создаются стандартные геттеры и сеттеры.
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Миграции</h3>
+        <p>
+          После того как вы создали сущность с атрибутами, необходимо создать
+          миграцию для синхронизации структуры базы данных с новой сущностью.
+        </p>
+      </section>
+      <section>
+        <h3>Команда для создания миграции</h3>
+        <pre>
             <code>
               php bin/console make:migration
             </code>
           </pre>
-          <p>
-            Эта команда сгенерирует миграцию, которая отобразит изменения в базе
-            данных, такие как создание таблицы user
-          </p>
-        </section>
-        <section>
-          <h3>Применение миграции</h3>
-          <pre>
+        <p>
+          Эта команда сгенерирует миграцию, которая отобразит изменения в базе
+          данных, такие как создание таблицы user
+        </p>
+      </section>
+      <section>
+        <h3>Применение миграции</h3>
+        <pre>
             <code>
               php bin/console doctrine:migrations:migrate
             </code>
           </pre>
-          <p>Эта команда применит все миграции и синхронизирует базу данных.</p>
-        </section>
-        <section>
-          <h2>EntityManager</h2>
-        </section>
-        <section>
-          <h3>EntityManager</h3>
-          <p>
-            В Symfony, при работе с Doctrine ORM для манипуляции сущностями,
-            используется класс EntityManager. Этот класс отвечает за
-            взаимодействие с базой данных: создание, обновление, удаление, а
-            также выполнение запросов.
-          </p>
-        </section>
-        <section>
-          <h3>Частые команды в EntityManager</h3>
-          <p>
-            EntityManager — это центральный объект в Doctrine ORM, который
-            управляет жизненным циклом сущностей, выполняет операции сохранения,
-            обновления и удаления, а также предоставляет интерфейсы для
-            выполнения запросов.
-          </p>
-          <ul>
-            <li>persist($entity) — сохраняет новую сущность</li>
-            <li>
-              flush() — синхронизирует все изменения, сделанные в сущностях, с
-              базой данных.
-            </li>
-            <li>remove($entity) — удаляет сущность.</li>
-          </ul>
-        </section>
+        <p>Эта команда применит все миграции и синхронизирует базу данных.</p>
+      </section>
+      <section>
+        <h2>EntityManager</h2>
+      </section>
+      <section>
+        <h3>EntityManager</h3>
+        <p>
+          В Symfony, при работе с Doctrine ORM для манипуляции сущностями,
+          используется класс EntityManager. Этот класс отвечает за
+          взаимодействие с базой данных: создание, обновление, удаление, а
+          также выполнение запросов.
+        </p>
+      </section>
+      <section>
+        <h3>Частые команды в EntityManager</h3>
+        <p>
+          EntityManager — это центральный объект в Doctrine ORM, который
+          управляет жизненным циклом сущностей, выполняет операции сохранения,
+          обновления и удаления, а также предоставляет интерфейсы для
+          выполнения запросов.
+        </p>
+        <ul>
+          <li>persist($entity) — сохраняет новую сущность</li>
+          <li>
+            flush() — синхронизирует все изменения, сделанные в сущностях, с
+            базой данных.
+          </li>
+          <li>remove($entity) — удаляет сущность.</li>
+        </ul>
+      </section>
 
-        <section>
-          <h3>Пример создания сущности</h3>
-          <pre>
+      <section>
+        <h3>Пример создания сущности</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               // src/Controller/UserController.php
               namespace App\Controller;
@@ -1154,10 +1154,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section>
-          <h3>Пример обновлении сущности</h3>
-          <pre>
+      </section>
+      <section>
+        <h3>Пример обновлении сущности</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               // src/Controller/UserController.php
               namespace App\Controller;
@@ -1192,10 +1192,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section>
-          <h3>Пример удаления сущности</h3>
-          <pre>
+      </section>
+      <section>
+        <h3>Пример удаления сущности</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               // src/Controller/UserController.php
               namespace App\Controller;
@@ -1223,36 +1223,36 @@
 
             </code>
           </pre>
-        </section>
-        <section>
-          <h2>Repository</h2>
-        </section>
-        <section>
-          <h3>Репозиторий</h3>
-          <p>
-            В Symfony, репозитории (Repositories) используются для выполнения
-            запросов к базе данных.
-          </p>
-          <div>
-            Репозиторий может использоваться для выполнения запросов к базе
-            данных, таких как:
-            <ul>
-              <li>Поиск сущностей.</li>
-              <li>Фильтрация данных</li>
-              <li>Выполнение сложных запросов.</li>
-            </ul>
-          </div>
-          <p>
-            Репозитории находятся в папке src/Repository и связаны с сущностями
-            через Doctrine
-          </p>
-        </section>
+      </section>
+      <section>
+        <h2>Repository</h2>
+      </section>
+      <section>
+        <h3>Репозиторий</h3>
+        <p>
+          В Symfony, репозитории (Repositories) используются для выполнения
+          запросов к базе данных.
+        </p>
+        <div>
+          Репозиторий может использоваться для выполнения запросов к базе
+          данных, таких как:
+          <ul>
+            <li>Поиск сущностей.</li>
+            <li>Фильтрация данных</li>
+            <li>Выполнение сложных запросов.</li>
+          </ul>
+        </div>
+        <p>
+          Репозитории находятся в папке src/Repository и связаны с сущностями
+          через Doctrine
+        </p>
+      </section>
 
-        <section>
-          <h3>
-            Пример использования EntityManager и Repository внутри контроллера
-          </h3>
-          <pre>
+      <section>
+        <h3>
+          Пример использования EntityManager и Repository внутри контроллера
+        </h3>
+        <pre>
             <code>
               // src/Controller/UserController.php
               namespace App\Controller;
@@ -1293,47 +1293,92 @@
 
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h3>Метод find</h3>
-          <p>
-            Метод find() используется для поиска сущности по её ID (или
-            первичному ключу)
-          </p>
-          <pre>
+      <section>
+        <h3>
+          Пример использования EntityManager и Repository внутри контроллера php8
+        </h3>
+        <pre>
+            <code>
+              // src/Controller/UserController.php
+              namespace App\Controller;
+
+              use App\Entity\User;
+              use App\Repository\UserRepository;
+              use Doctrine\ORM\EntityManagerInterface;
+              use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+              use Symfony\Component\HttpFoundation\Response;
+              use Symfony\Component\Routing\Annotation\Route;
+
+              class UserController extends AbstractController
+              {
+
+                  public function __construct(
+                    private UserRepository $userRepository, 
+                    private EntityManagerInterface $entityManager)
+                  {
+                  }
+
+                  
+                  #[Route('/users', name: "user_index")]
+                  public function index(): Response
+                  {
+                      // Получаем всех пользователей через репозиторий
+                      $users = $this->userRepository->findAll();
+
+                      // Возвращаем результат в виде ответа
+                      return $this->render('user/list.html.twig', [
+                          'users' => $users,
+                      ]);
+                  }
+
+              }
+
+
+            </code>
+          </pre>
+      </section>
+
+      <section>
+        <h3>Метод find</h3>
+        <p>
+          Метод find() используется для поиска сущности по её ID (или
+          первичному ключу)
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $user = $userRepository->find($id);
             </code>
           </pre>
-          <p>
-            Метод ищет сущность по её идентификатору (первичному ключу). В
-            результате возвращается объект сущности, если он найден, или null,
-            если сущность с таким идентификатором не существует.
-          </p>
-        </section>
+        <p>
+          Метод ищет сущность по её идентификатору (первичному ключу). В
+          результате возвращается объект сущности, если он найден, или null,
+          если сущность с таким идентификатором не существует.
+        </p>
+      </section>
 
-        <section>
-          <h3>Метод findBy</h3>
-          <p>
-            Метод findBy() используется для поиска сущностей по нескольким
-            критериям. Это позволяет вам получить список сущностей, которые
-            соответствуют определённым параметрам. Вы можете передавать массив
-            критериев, а также настраивать порядок сортировки и лимит выборки.
-          </p>
-          <pre>
+      <section>
+        <h3>Метод findBy</h3>
+        <p>
+          Метод findBy() используется для поиска сущностей по нескольким
+          критериям. Это позволяет вам получить список сущностей, которые
+          соответствуют определённым параметрам. Вы можете передавать массив
+          критериев, а также настраивать порядок сортировки и лимит выборки.
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $users = $userRepository->findBy(['name' => 'John', 'email' => 'john@example.com']);
             </code>
           </pre>
-          <p>
-            Этот метод позволяет искать все сущности, которые соответствуют
-            набору переданных критериев.
-          </p>
-        </section>
-        <section>
-          <h3>Ещё один пример использования findBy</h3>
-          <pre>
+        <p>
+          Этот метод позволяет искать все сущности, которые соответствуют
+          набору переданных критериев.
+        </p>
+      </section>
+      <section>
+        <h3>Ещё один пример использования findBy</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               // Находим пользователей с именем "John"
               $users = $userRepository->findBy(['name' => 'John']);  
@@ -1345,10 +1390,10 @@
 
             </code>
           </pre>
-        </section>
-        <section>
-          <h3>Пример findBy с доп. параметрами</h3>
-          <pre>
+      </section>
+      <section>
+        <h3>Пример findBy с доп. параметрами</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               // Находим пользователей с именем "John", сортируем по дате создания, ограничиваем 10 результатами
               $users = $userRepository->findBy(
@@ -1363,62 +1408,62 @@
               }
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h3>Метод findOneBy()</h3>
-          <p>
-            Метод findOneBy() используется для поиска одной сущности, которая
-            соответствует переданным критериям. В отличие от findBy(), который
-            возвращает массив сущностей, findOneBy() возвращает только одну
-            сущность или null, если такая сущность не найдена
-          </p>
-          <pre>
+      <section>
+        <h3>Метод findOneBy()</h3>
+        <p>
+          Метод findOneBy() используется для поиска одной сущности, которая
+          соответствует переданным критериям. В отличие от findBy(), который
+          возвращает массив сущностей, findOneBy() возвращает только одну
+          сущность или null, если такая сущность не найдена
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $user = $userRepository->findOneBy(['email' => 'john@example.com']);
             </code>
           </pre>
-          <p>
-            тот метод ищет одну сущность, которая соответствует переданным
-            критериям (например, email). Если таких сущностей несколько, метод
-            возвращает первую, которая подходит под условия
-          </p>
-        </section>
+        <p>
+          тот метод ищет одну сущность, которая соответствует переданным
+          критериям (например, email). Если таких сущностей несколько, метод
+          возвращает первую, которая подходит под условия
+        </p>
+      </section>
 
-        <section>
-          <h3>Метод findAll</h3>
-          <p>
-            Функция findAll() в Doctrine используется для получения всех записей
-            из таблицы, которая соответствует определенной сущности
-          </p>
-          <pre>
+      <section>
+        <h3>Метод findAll</h3>
+        <p>
+          Функция findAll() в Doctrine используется для получения всех записей
+          из таблицы, которая соответствует определенной сущности
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               // Получаем всех пользователей из базы данных
               $users = $userRepository->findAll();
             </code>
           </pre>
-          <p>
-            В этом примере мы используем findAll() для извлечения всех
-            пользователей. Результатом будет массив объектов User, которые затем
-            передаются в шаблон для отображения.
-          </p>
-        </section>
+        <p>
+          В этом примере мы используем findAll() для извлечения всех
+          пользователей. Результатом будет массив объектов User, которые затем
+          передаются в шаблон для отображения.
+        </p>
+      </section>
 
-        <section>
-          <h3>Query Builder</h3>
-          <p>
-            QueryBuilder в Doctrine — это мощный инструмент для создания
-            динамических SQL-запросов. Он позволяет строить запросы на уровне
-            PHP, избегая необходимости писать сложный SQL вручную. Это также
-            позволяет строить более гибкие запросы с возможностью безопасной
-            работы с параметрами (что помогает избежать SQL-инъекций) и
-            поддерживает работу с сущностями Doctrine.
-          </p>
-        </section>
+      <section>
+        <h3>Query Builder</h3>
+        <p>
+          QueryBuilder в Doctrine — это мощный инструмент для создания
+          динамических SQL-запросов. Он позволяет строить запросы на уровне
+          PHP, избегая необходимости писать сложный SQL вручную. Это также
+          позволяет строить более гибкие запросы с возможностью безопасной
+          работы с параметрами (что помогает избежать SQL-инъекций) и
+          поддерживает работу с сущностями Doctrine.
+        </p>
+      </section>
 
-        <section>
-          <h3>Пример использования query builder</h3>
-          <pre>
+      <section>
+        <h3>Пример использования query builder</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $qb = $userRepository->createQueryBuilder('u');
               $qb->where('u.name = :value')
@@ -1428,14 +1473,14 @@
               $results = $query->getResult(); // массив объектов User 
             </code>
           </pre>
-        </section>
-        <section>
-          <h3>Where</h3>
-          <p>
-            Метод where() добавляет условие для запроса. Вы можете добавлять
-            дополнительные условия с помощью andWhere() или orWhere().
-          </p>
-          <pre>
+      </section>
+      <section>
+        <h3>Where</h3>
+        <p>
+          Метод where() добавляет условие для запроса. Вы можете добавлять
+          дополнительные условия с помощью andWhere() или orWhere().
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $qb->where('u.name = :name')
               // или
@@ -1444,84 +1489,84 @@
 
             </code>
           </pre>
-        </section>
-        <section>
-          <h3>setParameter()</h3>
-          <p>
-            Метод setParameter() используется для связывания параметра с
-            реальным значением. Это предотвращает SQL-инъекции, так как значения
-            не подставляются напрямую в запрос, а передаются как параметры.
-          </p>
-          <pre>
+      </section>
+      <section>
+        <h3>setParameter()</h3>
+        <p>
+          Метод setParameter() используется для связывания параметра с
+          реальным значением. Это предотвращает SQL-инъекции, так как значения
+          не подставляются напрямую в запрос, а передаются как параметры.
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $qb->setParameter('name', 'John');
             </code>
           </pre>
-          <p>
-            В приведенном примере параметр :name будет заменен значением 'John'
-          </p>
-        </section>
-        <section>
-          <h3>orderBy()</h3>
-          <p>
-            Метод orderBy() используется для сортировки результатов. Вы
-            указываете поле, по которому будет производиться сортировка, и
-            направление сортировки (ASC — по возрастанию, DESC — по убыванию).
-          </p>
-          <pre>
+        <p>
+          В приведенном примере параметр :name будет заменен значением 'John'
+        </p>
+      </section>
+      <section>
+        <h3>orderBy()</h3>
+        <p>
+          Метод orderBy() используется для сортировки результатов. Вы
+          указываете поле, по которому будет производиться сортировка, и
+          направление сортировки (ASC — по возрастанию, DESC — по убыванию).
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $qb->orderBy('u.name', 'ASC')
             </code>
           </pre>
-        </section>
-        <section>
-          <h3>join() и leftJoin()</h3>
-          <p>
-            Методы join() и leftJoin() используются для объединения сущностей. В
-            отличие от обычных SQL-запросов, где вы пишете JOIN, здесь
-            используется объектно-ориентированный подход.
-          </p>
-          <pre>
+      </section>
+      <section>
+        <h3>join() и leftJoin()</h3>
+        <p>
+          Методы join() и leftJoin() используются для объединения сущностей. В
+          отличие от обычных SQL-запросов, где вы пишете JOIN, здесь
+          используется объектно-ориентированный подход.
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $qb->join('u.profile', 'p');
               $qb->leftJoin('u.orders', 'o')
             </code>
           </pre>
-          <p>
-            join() создаст стандартный INNER JOIN, а leftJoin() — LEFT JOIN.
-          </p>
-        </section>
-        <section>
-          <h3>getQuery()</h3>
-          <p>
-            После того как все части запроса собраны, вы можете использовать
-            метод getQuery(), чтобы получить объект Query, который выполняет
-            запрос.
-          </p>
-          <pre>
+        <p>
+          join() создаст стандартный INNER JOIN, а leftJoin() — LEFT JOIN.
+        </p>
+      </section>
+      <section>
+        <h3>getQuery()</h3>
+        <p>
+          После того как все части запроса собраны, вы можете использовать
+          метод getQuery(), чтобы получить объект Query, который выполняет
+          запрос.
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $query = $qb->getQuery();
               $results = $query->getResult();
             </code>
           </pre>
-        </section>
+      </section>
 
-        <section>
-          <h3>limit() и offset()</h3>
-          <p>
-            Методы limit() и offset() позволяют управлять количеством
-            возвращаемых результатов и реализовывать пагинацию.
-          </p>
-          <pre>
+      <section>
+        <h3>limit() и offset()</h3>
+        <p>
+          Методы limit() и offset() позволяют управлять количеством
+          возвращаемых результатов и реализовывать пагинацию.
+        </p>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $qb->setMaxResults(10)  // Ограничение на 10 записей
                 ->setFirstResult(20) // Смещение на 20 записей
             </code>
           </pre>
-        </section>
-        <section>
-          <h3>Ещё один пример Query Builder</h3>
-          <pre>
+      </section>
+      <section>
+        <h3>Ещё один пример Query Builder</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $qb = $userRepository->createQueryBuilder('u');
 
@@ -1536,10 +1581,10 @@
               $users = $query->getResult();
             </code>
           </pre>
-        </section>
-        <section>
-          <h3>Пример QB с Join</h3>
-          <pre>
+      </section>
+      <section>
+        <h3>Пример QB с Join</h3>
+        <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $qb = $userRepository->createQueryBuilder('u');
 
@@ -1553,20 +1598,21 @@
               
             </code>
           </pre>
-        </section>
-      </div>
+      </section>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reveal.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/plugin/highlight/highlight.min.js"></script>
-    <script>
-      Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        plugins: [RevealHighlight],
-        slideNumber: true,
-        autoAnimate: true,
-      });
-    </script>
-  </body>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reveal.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/plugin/highlight/highlight.min.js"></script>
+  <script>
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      plugins: [RevealHighlight],
+      slideNumber: true,
+      autoAnimate: true,
+    });
+  </script>
+</body>
+
 </html>
